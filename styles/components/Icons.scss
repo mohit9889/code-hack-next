@@ -1,0 +1,37 @@
+// Define mixin to set height and width
+@mixin set-dimensions($size) {
+  width: $size;
+  height: $size;
+}
+
+.icon {
+  // Default height and width
+  svg {
+    @include set-dimensions(18px);
+  }
+  &-12 {
+    svg {
+      @include set-dimensions(12px);
+    }
+  }
+  &-20 {
+    svg {
+      @include set-dimensions(20px);
+    }
+  }
+  &-white {
+    svg path {
+      fill: white;
+    }
+  }
+  &-red {
+    svg path {
+      fill: #dc2626;
+    }
+  }
+  &-green {
+    svg path {
+      fill: #16a34a;
+    }
+  }
+}

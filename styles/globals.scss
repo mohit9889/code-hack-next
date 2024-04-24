@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-raleway);
+}
+
+/* NProgress */
+#nprogress .bar {
+  background-color: #ff570c !important;
+  height: 5px !important;
+}
+
+// components
+@import "./components/Icons.scss";
+@import "./components/CodeEditor.scss";
+@import "./components/CodeDisplay.scss";
