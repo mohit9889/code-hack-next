@@ -8,6 +8,7 @@ import LikeDisLike from "~/components/LikeDisLike";
 import CommentForm from "~/components/CommentForm";
 import Comments from "~/components/Comments";
 import { formatDate, getTrickURL } from "~/utils/utilities";
+import toast from "react-hot-toast";
 
 const Trick = ({ trickData = {} }) => {
   const {
@@ -32,6 +33,13 @@ const Trick = ({ trickData = {} }) => {
     try {
       await reportHack(id);
       setIsHackReported(true);
+      toast("Hack reported! Our coding detectives are on the case.", {
+        style: {
+          borderRadius: "10px",
+          background: "#323643",
+          color: "#fff",
+        },
+      });
     } catch (error) {
       console.log("Error while reporting Hack!", error);
       setIsHackReported(false);

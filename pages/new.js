@@ -7,6 +7,7 @@ import Tooltip from "~/components/Tooltip";
 import { initialCode, languages } from "~/utils/utilities";
 import SendSvg from "~/public/icons/send.svg";
 import WarningSvg from "~/public/icons/warning.svg";
+import toast from "react-hot-toast";
 
 const New = () => {
   const currentCodeLang = languages[0].name.toLowerCase();
@@ -29,6 +30,13 @@ const New = () => {
       // Reset the form after successful submission
       e.target.reset();
       setCode(initialCode);
+      toast("Hack submitted! May the code be with you... always.", {
+        style: {
+          borderRadius: "10px",
+          background: "#323643",
+          color: "#fff",
+        },
+      });
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (error) {
       console.error("Failed to submit the hack:", error);

@@ -18,12 +18,14 @@ const Header = () => {
           New Trick
         </Link>
       </div>
-      <span className="font-bold text-lg flex items-center">
-        <span className="icon-20 mr-1">
-          <JSSvg />
+      <Link href="/" as="/">
+        <span className="font-bold text-lg flex items-center">
+          <span className="icon-20 mr-1">
+            <JSSvg />
+          </span>
+          JS Tricks
         </span>
-        JS Tricks
-      </span>
+      </Link>
       {/* <span className="font-bold text-lg"></span> */}
     </div>
   );

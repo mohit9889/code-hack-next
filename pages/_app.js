@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import MainLayout from "~/layouts/MainLayout";
 import Router from "next/router";
+import { Toaster } from "react-hot-toast";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import "~/styles/globals.scss";
@@ -24,6 +25,7 @@ export default function App({ Component, pageProps }) {
   return (
     <MainLayout>
       <Component {...pageProps} />
+      <Toaster position="top-right" reverseOrder={true} />
     </MainLayout>
   );
 }

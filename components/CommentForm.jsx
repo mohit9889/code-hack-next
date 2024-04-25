@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { addCommentToHack, addReplyToComment } from "~/api";
 import Tooltip from "./Tooltip";
 import WarningSvg from "~/public/icons/warning.svg";
+import toast from "react-hot-toast";
 
 const CommentForm = ({
   hackId = "",
@@ -28,6 +29,15 @@ const CommentForm = ({
         comment = res.comment;
       }
       handleSetCommentData(comment, commentId);
+      toast("Hooray! A new comment to brighten our day!", {
+        style: {
+          borderRadius: "10px",
+          background: "#323643",
+          color: "#fff",
+        },
+      });
+      e.target.reset();
+      setIsCommentBoxFocused(false);
     } catch (error) {
       console.error("Failed to submit the hack:", error);
     }

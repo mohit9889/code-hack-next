@@ -14,7 +14,7 @@ const Footer = () => {
       { link: "/", title: "Top Tricks", query: { tab: "top" } },
     ],
     ENGAGE: [{ link: "/new", title: "Add Trick" }],
-    MORE: [{ link: "/new", title: "Add Trick" }],
+    MORE: [{ link: "/about-me", title: "About Me" }],
   };
 
   const handleNavigation = (_val) => {

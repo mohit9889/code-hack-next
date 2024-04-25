@@ -6,6 +6,7 @@ import LikeDisLike from "./LikeDisLike";
 import { getTrickURL, formatDate } from "~/utils/utilities";
 import EyeSvg from "~/public/icons/eye.svg";
 import StopSvg from "~/public/icons/stop.svg";
+import toast from "react-hot-toast";
 
 const TrickCard = ({ index, trick = {} }) => {
   const {
@@ -29,6 +30,13 @@ const TrickCard = ({ index, trick = {} }) => {
     try {
       await reportHack(id);
       setIsHackReported(true);
+      toast("Hack reported! Our coding detectives are on the case.", {
+        style: {
+          borderRadius: "10px",
+          background: "#323643",
+          color: "#fff",
+        },
+      });
     } catch (error) {
       console.log("Error while reporting Hack!", error);
       setIsHackReported(false);
