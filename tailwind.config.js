@@ -30,9 +30,20 @@ module.exports = {
           "0%, 100%": { opacity: 0.5 },
           "50%": { opacity: 1 },
         },
+        upAndFade: {
+          "0%": {
+            transform: "translateY(0)",
+            opacity: 1,
+          },
+          "100%": {
+            transform: "translateY(-100px)",
+            opacity: 0,
+          },
+        },
       },
       animation: {
         blinkingBg: "blinkingBg 2s ease-in-out infinite",
+        "up-and-fade": "upAndFade 2s ease-out",
       },
     },
   },
