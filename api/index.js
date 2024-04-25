@@ -187,3 +187,19 @@ export const dislikeComment = async (hackId, commentId) => {
     throw error;
   }
 };
+
+export const reportHack = async (hackId) => {
+  try {
+    const response = await fetch(`${API_BASE_PATH}/hacks/${hackId}/report`, {
+      method: "POST",
+    });
+    if (!response.ok) {
+      throw new Error("Failed to dislike the comment");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error disliking the comment:", error);
+    throw error;
+  }
+};

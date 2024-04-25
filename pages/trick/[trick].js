@@ -1,5 +1,5 @@
-import React from "react";
-import { getSingleTrickData } from "~/api";
+import { useState } from "react";
+import { getSingleTrickData, reportHack } from "~/api";
 import Heading from "~/components/Heading";
 import BackButton from "~/components/BackButton";
 import CodeDisplay from "~/components/CodeDisplay";
@@ -16,15 +16,46 @@ const Trick = ({ trickData = {} }) => {
     description,
     user_name,
     twitter_id,
-    created_at,
+    createdAt: created_at,
     comment_count,
     like_count,
     code,
     code_lang,
-    comments: commentsData,
+    comments,
   } = trickData;
 
   const url = getTrickURL(title, id);
+  const [isHackReported, setIsHackReported] = useState(false);
+  const [commentsData, setCommentsData] = useState(comments);
+
+  const handleReportHack = async () => {
+    try {
+      await reportHack(id);
+      setIsHackReported(true);
+    } catch (error) {
+      console.log("Error while reporting Hack!", error);
+      setIsHackReported(false);
+    }
+  };
+
+  const handleSetCommentData = (newComment, commentId = "") => {
+    const updatedComments = [...commentsData];
+
+    if (commentId) {
+      const commentIndex = updatedComments.findIndex(
+        (c) => c._id === commentId
+      );
+      if (commentIndex !== -1) {
+        updatedComments[commentIndex].replies = [
+          newComment,
+          ...updatedComments[commentIndex].replies,
+        ];
+      }
+    } else {
+      updatedComments.unshift(newComment);
+    }
+    setCommentsData(updatedComments);
+  };
 
   return (
     <div className="my-5">
@@ -47,7 +78,17 @@ const Trick = ({ trickData = {} }) => {
                 {comment_count} {comment_count > 1 ? "comments" : "comment"}
               </span>
               <span className="mx-1">|</span>
-              <span className=" cursor-pointer hover:text-orange ">Report</span>
+              <button
+                onClick={handleReportHack}
+                disabled={isHackReported}
+                className={`${
+                  isHackReported
+                    ? " cursor-not-allowed text-orange"
+                    : "cursor-pointer hover:text-orange"
+                }`}
+              >
+                {isHackReported ? "Reported" : "Report"}
+              </button>
               <span className="mx-1">|</span>
               <ShareButton
                 url={`trick/${url}`}
@@ -64,10 +105,19 @@ const Trick = ({ trickData = {} }) => {
       <CodeDisplay code={code} language={code_lang} />
 
       {/* Comment Form */}
-      <CommentForm hackId={id} type="comment" />
+      <CommentForm
+        hackId={id}
+        type="comment"
+        handleSetCommentData={handleSetCommentData}
+      />
 
       {/* Comments */}
-      <Comments hackId={id} commentsData={commentsData} />
+      <Comments
+        key={commentsData}
+        hackId={id}
+        commentsData={commentsData}
+        handleSetCommentData={handleSetCommentData}
+      />
     </div>
   );
 };

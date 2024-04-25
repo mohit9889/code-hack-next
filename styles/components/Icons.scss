@@ -14,6 +14,11 @@
       @include set-dimensions(12px);
     }
   }
+  &-15 {
+    svg {
+      @include set-dimensions(15px);
+    }
+  }
   &-20 {
     svg {
       @include set-dimensions(20px);
@@ -22,6 +27,11 @@
   &-white {
     svg path {
       fill: white;
+    }
+  }
+  &-black {
+    svg path {
+      fill: #323643 !important;
     }
   }
   &-red {

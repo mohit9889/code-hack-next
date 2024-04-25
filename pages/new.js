@@ -3,8 +3,10 @@ import { submitHack } from "~/api";
 import Heading from "~/components/Heading";
 import BackButton from "~/components/BackButton";
 import CodeEditor from "~/components/CodeEditor";
+import Tooltip from "~/components/Tooltip";
 import { initialCode, languages } from "~/utils/utilities";
 import SendSvg from "~/public/icons/send.svg";
+import WarningSvg from "~/public/icons/warning.svg";
 
 const New = () => {
   const currentCodeLang = languages[0].name.toLowerCase();
@@ -24,6 +26,10 @@ const New = () => {
         formDataObj.code = code;
       }
       await submitHack(formDataObj);
+      // Reset the form after successful submission
+      e.target.reset();
+      setCode(initialCode);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (error) {
       console.error("Failed to submit the hack:", error);
     }
@@ -37,6 +43,7 @@ const New = () => {
         customClasses="!justify-start mt-4"
       />
       <form onSubmit={handleSubmit}>
+        {/* Title */}
         <div className="mt-7 flex flex-col">
           <label htmlFor="title" className="flex">
             <span className="text-sm">Title</span>
@@ -50,6 +57,7 @@ const New = () => {
             className="p-2 rounded-lg outline-none focus:border"
           />
         </div>
+        {/* Description */}
         <div className="mt-7 flex flex-col">
           <label htmlFor="description" className="mb-3">
             <span className="text-sm">Description</span>
@@ -61,6 +69,7 @@ const New = () => {
             className="p-2 rounded-lg outline-none focus:border"
           />
         </div>
+        {/* Code Editor */}
         <div className="mt-7 flex flex-col">
           <label htmlFor="description" className="mb-3">
             <span className="text-sm">Code</span>
@@ -69,10 +78,18 @@ const New = () => {
             <CodeEditor code={code} handleCodeChange={handleCodeChange} />
           </div>
         </div>
+        {/* User Name */}
         <div className="mt-7 flex flex-col justify-start">
-          <label htmlFor="user_name" className="flex">
-            <span className="text-sm">User Name</span>
-            <span className="text-orange text-2xl">*</span>
+          <label htmlFor="user_name" className="flex justify-between">
+            <span className="flex">
+              <span className="text-sm">User Name</span>
+              <span className="text-orange text-2xl">*</span>
+            </span>
+            <Tooltip text="For display purposes, eyes only! 👀✨">
+              <span className="icon-15 cursor-pointer animate-blinkingBg">
+                <WarningSvg />
+              </span>
+            </Tooltip>
           </label>
           <input
             name="user_name"
@@ -82,6 +99,7 @@ const New = () => {
             className="p-2 rounded-lg outline-none focus:border"
           />
         </div>
+        {/* Twitter ID */}
         <div className="mt-7 flex flex-col justify-start">
           <label htmlFor="twitter_id" className="mb-3 flex">
             <span className="text-sm">Twitter</span>

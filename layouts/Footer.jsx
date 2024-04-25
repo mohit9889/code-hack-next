@@ -1,9 +1,12 @@
-import React from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import BreakSvg from "~/public/icons/break.svg";
 
 const Footer = () => {
   const router = useRouter();
+  const [isBreakSvgClick, setIsBreakSvgClick] = useState(false);
+
   const footerData = {
     DISCOVER: [
       { link: "/", title: "Hot Tricks", query: { tab: "hot" } },
@@ -29,13 +32,24 @@ const Footer = () => {
   return (
     <div className="flex flex-col pt-8 pb-20">
       <div>
-        <h2 className=" font-bold text-xl mb-4">What is JS Hacks?</h2>
-        <p className="">
-          50 Hacks is a crowdsourced list of the 50 best productivity hacks.
-          Anyone can write tips that help them get things done—no account
-          needed. The internet upvotes the best ones.
+        <h2 className=" font-bold text-xl mb-4">
+          What is JavaScript Hacks? 🚀
+        </h2>
+        <p className=" font-medium">
+          Hey there, fellow code adventurer! Ever wished JavaScript could be
+          more than just lines of serious code? Well, welcome to JS Hacks –
+          where JavaScript gets a playful makeover!🎉
         </p>
-        <p>You get a curated list of the top productivity tips!</p>
+        <p className=" font-medium mt-2">
+          So, whether you're a coding newbie or a seasoned pro, join us on this
+          epic quest to discover the quirkiest, coolest, and downright silliest
+          JavaScript hacks out there. Trust us, your code will thank you (and
+          maybe even crack a smile).😄
+        </p>
+        <p className=" font-medium mt-2">
+          Ready to hack, slash, and LOL your way through JavaScript? Let's dive
+          in and unleash the fun-tastic power of JS Hacks together! 💻✨
+        </p>
       </div>
       <hr className="mt-20 mb-10 opacity-50 border-b-2" />
       <div className="flex justify-between">
@@ -62,6 +76,17 @@ const Footer = () => {
           </div>
         ))}
       </div>
+      <div className="flex justify-end">
+        <span
+          onClick={() => setIsBreakSvgClick(!isBreakSvgClick)}
+          className="icon-20 cursor-pointer animate-blinkingBg"
+        >
+          <BreakSvg />
+        </span>
+      </div>
+      {isBreakSvgClick && (
+        <p>Danger ahead! 🚨 Think twice before poking the coding bear! 🐻</p>
+      )}
     </div>
   );
 };

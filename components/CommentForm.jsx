@@ -1,31 +1,33 @@
 import React, { useState } from "react";
 import { addCommentToHack, addReplyToComment } from "~/api";
+import Tooltip from "./Tooltip";
+import WarningSvg from "~/public/icons/warning.svg";
 
 const CommentForm = ({
   hackId = "",
   customClasses = "",
   commentId = "",
   type = "comment",
+  handleSetCommentData,
+  showHeading = true,
 }) => {
   const [isCommentBoxFocused, setIsCommentBoxFocused] = useState(false);
 
-  const handleSubmitComment = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
       const formData = new FormData(e.target);
       const formDataObj = Object.fromEntries(formData.entries());
-      await addCommentToHack(hackId, formDataObj);
-    } catch (error) {
-      console.error("Failed to submit the hack:", error);
-    }
-  };
+      let comment;
 
-  const handleSubmitCommentReply = async (e) => {
-    e.preventDefault();
-    try {
-      const formData = new FormData(e.target);
-      const formDataObj = Object.fromEntries(formData.entries());
-      await addReplyToComment(hackId, commentId, formDataObj);
+      if (type === "comment") {
+        const res = await addCommentToHack(hackId, formDataObj);
+        comment = res.comment;
+      } else {
+        const res = await addReplyToComment(hackId, commentId, formDataObj);
+        comment = res.comment;
+      }
+      handleSetCommentData(comment, commentId);
     } catch (error) {
       console.error("Failed to submit the hack:", error);
     }
@@ -33,26 +35,29 @@ const CommentForm = ({
 
   return (
     <div className={`flex flex-col mt-16 ${customClasses}`}>
-      <form
-        onSubmit={(e) =>
-          type === "comment"
-            ? handleSubmitComment(e)
-            : handleSubmitCommentReply(e)
-        }
-      >
+      {showHeading && <h1 className="mb-3 text-xl font-bold">Add a Comment</h1>}
+      <form onSubmit={handleFormSubmit}>
         <textarea
+          required
           name="comment"
-          placeholder="Want to something?"
+          placeholder="Leave your mark... or a joke."
           rows={4}
           className="p-2 w-full rounded-lg outline-none focus:border"
           onFocus={() => setIsCommentBoxFocused(true)}
         />
         {isCommentBoxFocused && (
           <div className="flex gap-x-[15px]">
-            <div className="mt-7 flex flex-col justify-start flex-1">
-              <label htmlFor="user_name" className="flex">
-                <span className="text-sm">User Name</span>
-                <span className="text-orange text-2xl">*</span>
+            <div className="mt-3 flex flex-col justify-start flex-1">
+              <label htmlFor="user_name" className="flex justify-between">
+                <span className="flex">
+                  <span className="text-sm">User Name</span>
+                  <span className="text-orange text-2xl">*</span>
+                </span>
+                <Tooltip text="For display purposes, eyes only! 👀✨">
+                  <span className="icon-15 cursor-pointer animate-blinkingBg">
+                    <WarningSvg />
+                  </span>
+                </Tooltip>
               </label>
               <input
                 name="user_name"
@@ -61,14 +66,14 @@ const CommentForm = ({
                 className="p-2 rounded-lg outline-none focus:border"
               />
             </div>
-            <div className="mt-7 flex flex-col justify-start flex-1">
+            <div className="mt-3 flex flex-col justify-start flex-1">
               <label htmlFor="twitter_id" className="mb-3 flex">
                 <span className="text-sm">Twitter</span>
               </label>
               <input
                 name="twitter_id"
                 type="text"
-                placeholder="@Twitter"
+                placeholder="@twitter"
                 className="p-2 rounded-lg outline-none focus:border"
               />
             </div>
@@ -76,7 +81,7 @@ const CommentForm = ({
         )}
         <button
           type="submit"
-          className="rounded-lg bg-orange hover:bg-[#c2410c] text-white mt-6 w-full h-[45px] font-bold"
+          className="rounded-lg bg-orange hover:bg-[#c2410c] text-white mt-3 w-full h-[45px] font-bold"
         >
           Add Comment
         </button>

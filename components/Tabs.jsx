@@ -1,8 +1,8 @@
 import React from "react";
 import { useRouter } from "next/router";
-import TopTrickSvg from "~/public/icons/top-trick.svg";
-import HotTrickSvg from "~/public/icons/hot-trick.svg";
-import NewTrickSvg from "~/public/icons/new-trick.svg";
+import TopTrickSvg from "~/public/icons/tabs/top-trick.svg";
+import HotTrickSvg from "~/public/icons/tabs/hot-trick.svg";
+import NewTrickSvg from "~/public/icons/tabs/new-trick.svg";
 
 const Tabs = ({
   tabs = [],

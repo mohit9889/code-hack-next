@@ -25,6 +25,15 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-raleway)"],
       },
+      keyframes: {
+        blinkingBg: {
+          "0%, 100%": { opacity: 0.5 },
+          "50%": { opacity: 1 },
+        },
+      },
+      animation: {
+        blinkingBg: "blinkingBg 2s ease-in-out infinite",
+      },
     },
   },
   plugins: [],

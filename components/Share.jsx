@@ -1,53 +1,27 @@
-import { useEffect } from "react";
-
 const BASE_URL = process.env.BASE_URL;
 
 const ShareButton = ({ url, customClass }) => {
   const shareUrl = `${BASE_URL}/${url}`;
 
-  const handleShare = () => {
+  const handleShare = async () => {
+    const url = shareUrl || window.location.href;
     if (navigator.share) {
-      navigator
-        .share({
-          title: document.title,
-          url: shareUrl || window.location.href,
-        })
-        .then(() => {
-          console.log("URL shared successfully.");
-        })
-        .catch((error) => {
-          console.error("Error sharing URL:", error);
+      try {
+        await navigator.share({
+          title: "Check this out!",
+          url: url,
         });
+      } catch (err) {
+        console.log("Failed to Share", err);
+      }
     } else {
-      // Copy URL to clipboard
-      navigator.clipboard
-        .writeText(shareUrl || window.location.href)
-        .then(() => {
-          console.log("URL copied to clipboard.");
-        })
-        .catch((error) => {
-          console.error("Error copying URL to clipboard:", error);
-        });
-    }
-  };
-
-  useEffect(() => {
-    // Check if navigator is available (in a browser environment)
-    if (typeof navigator !== "undefined") {
-      const isMobile =
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        );
-      if (isMobile && !url) {
-        console.warn(
-          "URL must be provided for mobile devices to trigger share menu."
-        );
-      } else {
-        // Perform share action on mount
-        handleShare();
+      try {
+        await navigator.clipboard.writeText(url);
+      } catch (err) {
+        console.log("Failed to Copy", err);
       }
     }
-  }, []);
+  };
 
   return (
     <button className={customClass} onClick={handleShare}>
