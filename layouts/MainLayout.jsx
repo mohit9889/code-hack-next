@@ -12,9 +12,9 @@ const raleway = Raleway({
 const MainLayout = ({ children }) => {
   return (
     <div
-      className={`${raleway.variable} font-sans bg-primary-gray min-h-screen w-screen text-black-primary`}
+      className={`${raleway.variable} font-sans bg-primary-gray text-black-primary min-h-screen w-full p-2 lg:p-6`}
     >
-      <div className="container mx-auto pt-4">
+      <div className="max-w-2xl mx-auto pt-4">
         <Header />
         <main>{children}</main>
         <Footer />

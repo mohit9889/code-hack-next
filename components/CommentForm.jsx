@@ -56,7 +56,7 @@ const CommentForm = ({
           onFocus={() => setIsCommentBoxFocused(true)}
         />
         {isCommentBoxFocused && (
-          <div className="flex gap-x-[15px]">
+          <div className="flex gap-x-[15px] flex-col md:flex-row">
             <div className="mt-3 flex flex-col justify-start flex-1">
               <label htmlFor="user_name" className="flex justify-between">
                 <span className="flex">

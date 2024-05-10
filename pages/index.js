@@ -10,6 +10,8 @@ import {
   getAllTopTricksData,
 } from "~/api";
 import { tabs } from "~/utils/utilities";
+import SEO from "~/components/SEO";
+import { homeSeo } from "~/utils/seo";
 import AddSvg from "~/public/icons/add.svg";
 
 const SHOW_ADD_TRICK_BUTTON_ON_INDEX = [4, 11];
@@ -54,44 +56,49 @@ export default function Home({ tricksData }) {
   };
 
   return (
-    <div className="home my-5">
-      {/* Heading */}
-      <Heading
-        heading="Get Ready to LOL with JavaScript Hacks!"
-        customClasses="my-16"
-      />
-      {/* Tabs */}
-      <Tabs
-        tabs={tabs}
-        currentTab={currentTab}
-        handleTabChange={handleTabChange}
-      />
-      {/* Tricks */}
-      <div className="flex flex-col gap-y-[20px] mt-[10px]">
-        {currentTabData.map((trick, index) => (
-          <>
-            <TrickCard key={index} index={index + 1} trick={trick} />
-            {addTrickButton(index + 1)}
-          </>
-        ))}
-      </div>
+    <>
+      <SEO {...{ ...homeSeo }} />
+      <div className="home my-5">
+        {/* Heading */}
+        <Heading
+          heading="Get Ready to LOL with JavaScript Hacks!"
+          customClasses="my-16"
+        />
+        {/* Tabs */}
+        <Tabs
+          tabs={tabs}
+          currentTab={currentTab}
+          handleTabChange={handleTabChange}
+        />
+        {/* Tricks */}
+        <div className="flex flex-col gap-y-[20px] mt-[10px]">
+          {currentTabData.map((trick, index) => (
+            <>
+              <TrickCard key={index} index={index + 1} trick={trick} />
+              {addTrickButton(index + 1)}
+            </>
+          ))}
+        </div>
 
-      <p className="mt-4 font-medium text-center">
-        The end is near... of this list! But fear not, there's always more!
-      </p>
-      <div className="flex mt-4 items-center justify-center">
-        <Link
-          href="/new"
-          as="/new"
-          className="add-trick flex items-center bg-orange hover:bg-[#c2410c] rounded-lg p-3 text-white text-base font-semibold"
-        >
-          <span className="icon icon-white mr-1">
-            <AddSvg />
-          </span>
-          New Trick
-        </Link>
+        <p className="mt-4 font-medium text-center">
+          {currentTabData.length > 0
+            ? `The end is near... of this list! But fear not, there's always more!`
+            : "Welcome to the blank canvas! Your hack is the first stroke in our masterpiece of information."}
+        </p>
+        <div className="flex mt-4 items-center justify-center">
+          <Link
+            href="/new"
+            as="/new"
+            className="add-trick flex items-center bg-orange hover:bg-[#c2410c] rounded-lg p-3 text-white text-base font-semibold"
+          >
+            <span className="icon icon-white mr-1">
+              <AddSvg />
+            </span>
+            New Trick
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

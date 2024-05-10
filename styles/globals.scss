@@ -6,10 +6,22 @@ body {
   font-family: var(--font-raleway);
 }
 
+@layer utilities {
+  .backdrop-blur-sm {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+}
+
 /* NProgress */
-#nprogress .bar {
-  background-color: #ff570c !important;
-  height: 5px !important;
+#nprogress {
+  .bar {
+    background-color: #ff570c !important;
+    height: 5px !important;
+  }
+  .spinner {
+    display: none;
+  }
 }
 
 // components

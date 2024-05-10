@@ -38,7 +38,7 @@ const Tabs = ({
   };
 
   return (
-    <ul className="flex items-center pt-5 sticky top-0 bg-primary-gray z-10">
+    <ul className="flex items-center pt-5 sticky top-0 bg-primary-gray z-10 -mx-2 sm:px-2">
       {tabs.map((tab) => (
         <li
           className={`flex-1 flex justify-center items-center cursor-pointer border-black-primary border-solid border-b-2 pb-3 font-bold text-base ${

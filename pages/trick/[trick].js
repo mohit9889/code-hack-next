@@ -7,6 +7,8 @@ import ShareButton from "~/components/Share";
 import LikeDisLike from "~/components/LikeDisLike";
 import CommentForm from "~/components/CommentForm";
 import Comments from "~/components/Comments";
+import SEO from "~/components/SEO";
+import { trickSeo } from "~/utils/seo";
 import { formatDate, getTrickURL } from "~/utils/utilities";
 import toast from "react-hot-toast";
 
@@ -66,67 +68,70 @@ const Trick = ({ trickData = {} }) => {
   };
 
   return (
-    <div className="my-5">
-      {/* Back Button */}
-      <BackButton />
+    <>
+      <SEO title={title} {...{ ...trickSeo }} />
+      <div className="my-5">
+        {/* Back Button */}
+        <BackButton />
 
-      {/* Trick Content */}
-      <div className="bg-white p-3 rounded-lg mb-4 mt-3">
-        <div className="flex justify-between">
-          <div className="flex flex-col">
-            <Heading heading={title} customClasses="!justify-start" />
-            {/* Extra Details */}
-            <div className="flex text-xs opacity-70 mt-2 flex-wrap">
-              <span>
-                By {twitter_id ? twitter_id : user_name} on{" "}
-                {formatDate(created_at)}
-              </span>
-              <span className="mx-1">|</span>
-              <span>
-                {comment_count} {comment_count > 1 ? "comments" : "comment"}
-              </span>
-              <span className="mx-1">|</span>
-              <button
-                onClick={handleReportHack}
-                disabled={isHackReported}
-                className={`${
-                  isHackReported
-                    ? " cursor-not-allowed text-orange"
-                    : "cursor-pointer hover:text-orange"
-                }`}
-              >
-                {isHackReported ? "Reported" : "Report"}
-              </button>
-              <span className="mx-1">|</span>
-              <ShareButton
-                url={`trick/${url}`}
-                customClass="cursor-pointer hover:text-orange"
-              />
+        {/* Trick Content */}
+        <div className="bg-white p-3 rounded-lg mb-4 mt-3">
+          <div className="flex justify-between">
+            <div className="flex flex-col">
+              <Heading heading={title} customClasses="!justify-start" />
+              {/* Extra Details */}
+              <div className="flex text-xs opacity-70 mt-2 flex-wrap">
+                <span>
+                  By {twitter_id ? twitter_id : user_name} on{" "}
+                  {formatDate(created_at)}
+                </span>
+                <span className="mx-1">|</span>
+                <span>
+                  {comment_count} {comment_count > 1 ? "comments" : "comment"}
+                </span>
+                <span className="mx-1">|</span>
+                <button
+                  onClick={handleReportHack}
+                  disabled={isHackReported}
+                  className={`${
+                    isHackReported
+                      ? " !cursor-not-allowed text-orange"
+                      : "hover:text-orange"
+                  }`}
+                >
+                  {isHackReported ? "Reported" : "Report"}
+                </button>
+                <span className="mx-1">|</span>
+                <ShareButton
+                  url={`trick/${url}`}
+                  customClass="cursor-pointer hover:text-orange"
+                />
+              </div>
             </div>
+            <LikeDisLike likeCount={like_count} trickId={id} />
           </div>
-          <LikeDisLike likeCount={like_count} trickId={id} />
+          <p className="mt-3">{description}</p>
         </div>
-        <p className="mt-3">{description}</p>
+
+        {/* Display code */}
+        <CodeDisplay code={code} language={code_lang} />
+
+        {/* Comment Form */}
+        <CommentForm
+          hackId={id}
+          type="comment"
+          handleSetCommentData={handleSetCommentData}
+        />
+
+        {/* Comments */}
+        <Comments
+          key={commentsData}
+          hackId={id}
+          commentsData={commentsData}
+          handleSetCommentData={handleSetCommentData}
+        />
       </div>
-
-      {/* Display code */}
-      <CodeDisplay code={code} language={code_lang} />
-
-      {/* Comment Form */}
-      <CommentForm
-        hackId={id}
-        type="comment"
-        handleSetCommentData={handleSetCommentData}
-      />
-
-      {/* Comments */}
-      <Comments
-        key={commentsData}
-        hackId={id}
-        commentsData={commentsData}
-        handleSetCommentData={handleSetCommentData}
-      />
-    </div>
+    </>
   );
 };
 
