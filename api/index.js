@@ -102,7 +102,7 @@ export const submitHack = async (data) => {
       body: JSON.stringify(data),
     });
     if (!response.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error("Failed to submit the hack.");
     }
     const responseData = await response.json();
     return responseData;
@@ -190,16 +190,18 @@ export const dislikeComment = async (hackId, commentId) => {
 
 export const reportHack = async (hackId) => {
   try {
+    console.log(`${API_BASE_PATH}/hacks/${hackId}/report`, "<<<<RESPONSE");
     const response = await fetch(`${API_BASE_PATH}/hacks/${hackId}/report`, {
       method: "POST",
     });
+    console.log(response, "<<<<RESPONSE");
     if (!response.ok) {
-      throw new Error("Failed to dislike the comment");
+      throw new Error("Failed to report the hack");
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error disliking the comment:", error);
+    console.error("Error Reporting the hack:", error);
     throw error;
   }
 };

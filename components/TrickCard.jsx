@@ -44,7 +44,7 @@ const TrickCard = ({ index, trick = {} }) => {
   };
 
   return (
-    <div className="relative shadow-lg">
+    <div className="relative rounded-lg shadow-lg">
       <div className="bg-white rounded-lg p-4 flex justify-between">
         <div className="flex flex-col justify-between">
           {/* Title */}
@@ -94,7 +94,7 @@ const TrickCard = ({ index, trick = {} }) => {
         <LikeDisLike key={id} likeCount={like_count} trickId={id} />
       </div>
       {showOffensiveHack && (
-        <div className="absolute top-0 left-0 rounded-lg w-full h-full backdrop-blur flex flex-col items-center justify-center">
+        <div className="absolute top-0 left-0 rounded-lg w-full h-full flex flex-col items-center justify-center backdrop-blur-sm">
           <span className="text-center flex items-center">
             <span className="icon-20 mr-2">
               <StopSvg />
