@@ -74,7 +74,7 @@ export default function Home({ tricksData }) {
         <div className="flex flex-col gap-y-[20px] mt-[10px]">
           {currentTabData.map((trick, index) => (
             <>
-              <TrickCard key={index} index={index + 1} trick={trick} />
+              <TrickCard key={trick._id} index={index + 1} trick={trick} />
               {addTrickButton(index + 1)}
             </>
           ))}
