@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Heading from "~/components/Heading";
 import Tabs from "~/components/Tabs";
 import TrickCard from "~/components/TrickCard";
 import {
-  getAllTricksData,
+  getAllHotTricksData,
   getAllNewTricksData,
   getAllTopTricksData,
 } from "~/api";
@@ -73,10 +73,10 @@ export default function Home({ tricksData }) {
         {/* Tricks */}
         <div className="flex flex-col gap-y-[20px] mt-[10px]">
           {currentTabData.map((trick, index) => (
-            <>
+            <React.Fragment key={trick._id}>
               <TrickCard key={trick._id} index={index + 1} trick={trick} />
               {addTrickButton(index + 1)}
-            </>
+            </React.Fragment>
           ))}
         </div>
 
@@ -104,7 +104,7 @@ export default function Home({ tricksData }) {
 
 export async function getServerSideProps() {
   const [allTricksData, allNewTricksData, allTopTricksData] = await Promise.all(
-    [getAllTricksData(), getAllNewTricksData(), getAllTopTricksData()]
+    [getAllHotTricksData(), getAllNewTricksData(), getAllTopTricksData()]
   );
   const response = {
     hot: allTricksData,
