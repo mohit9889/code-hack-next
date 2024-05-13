@@ -201,7 +201,6 @@ export const dislikeComment = async (hackId, commentId) => {
 
 export const reportHack = async (hackId) => {
   try {
-    console.log(`${API_BASE_PATH}/hacks/${hackId}/report`, "<<<<RESPONSE");
     const response = await fetch(`${API_BASE_PATH}/hacks/${hackId}/report`, {
       method: "POST",
     });
