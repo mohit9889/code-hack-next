@@ -161,5 +161,14 @@ export async function getServerSideProps(context) {
 
   const res = await getSingleTrickData(id);
 
+  if (res.status === 404) {
+    return {
+      redirect: {
+        destination: "/404",
+        permanent: false,
+      },
+    };
+  }
+
   return { props: { trickData: res } };
 }
