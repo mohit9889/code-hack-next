@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { getSingleTrickData, reportHack } from "~/api";
+import { useEffect, useState } from "react";
+import { getSingleTrickData, reportHack, visitedHack } from "~/api";
 import Heading from "~/components/Heading";
 import BackButton from "~/components/BackButton";
 import CodeDisplay from "~/components/CodeDisplay";
@@ -8,6 +8,10 @@ import LikeDisLike from "~/components/LikeDisLike";
 import CommentForm from "~/components/CommentForm";
 import Comments from "~/components/Comments";
 import SEO from "~/components/SEO";
+import {
+  getFromSessionStorage,
+  saveToSessionStorage,
+} from "~/utils/sessionStorage";
 import { trickSeo } from "~/utils/seo";
 import { formatDate, getTrickURL } from "~/utils/utilities";
 import toast from "react-hot-toast";
@@ -66,6 +70,18 @@ const Trick = ({ trickData = {} }) => {
     }
     setCommentsData(updatedComments);
   };
+
+  const hackVisited = async () => {
+    const res = await visitedHack(id);
+  };
+
+  useEffect(() => {
+    const visitedHack = getFromSessionStorage("visited_hacks") || [];
+    if (!visitedHack.includes(id)) {
+      hackVisited(id);
+      saveToSessionStorage("visited_hacks", [...visitedHack, id]);
+    }
+  }, []);
 
   return (
     <>

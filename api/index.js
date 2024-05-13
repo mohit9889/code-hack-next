@@ -56,6 +56,20 @@ export const getAllTopTricksData = async () => {
   }
 };
 
+export const getAllHotTricksData = async () => {
+  try {
+    const res = await fetch(`${API_BASE_PATH}/hacks/hot`);
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+
 export const likeHack = async (id) => {
   try {
     const response = await fetch(`${API_BASE_PATH}/hacks/${id}/like`, {
@@ -203,5 +217,23 @@ export const reportHack = async (hackId) => {
   } catch (error) {
     console.error("Error Reporting the hack:", error);
     throw error;
+  }
+};
+
+export const visitedHack = async (id) => {
+  try {
+    const response = await fetch(`${API_BASE_PATH}/hacks/${id}/visited`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Failed to like the hack");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Failed to like the hack:", error);
   }
 };
