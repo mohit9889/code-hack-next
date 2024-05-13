@@ -205,7 +205,6 @@ export const reportHack = async (hackId) => {
     const response = await fetch(`${API_BASE_PATH}/hacks/${hackId}/report`, {
       method: "POST",
     });
-    console.log(response, "<<<<RESPONSE");
     if (!response.ok) {
       throw new Error("Failed to report the hack");
     }
