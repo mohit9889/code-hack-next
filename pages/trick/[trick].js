@@ -130,7 +130,7 @@ const Trick = ({ trickData = {} }) => {
         </div>
 
         {/* Display code */}
-        <CodeDisplay code={code} language={code_lang} />
+        {code && <CodeDisplay code={code} language={code_lang} />}
 
         {/* Comment Form */}
         <CommentForm
