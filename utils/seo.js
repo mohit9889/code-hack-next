@@ -5,7 +5,7 @@ export const homeSeo = {
     "Explore the latest JavaScript hacks and tricks on our website. Discover the hottest, newest, and top-rated tricks to level up your coding game. Join our community of developers today!",
   ogImage: "/img/js-logo.png",
   keywords:
-    "JavaScript, web development, JavaScript hacks, JavaScript tricks, JavaScript tips, Web development tricks, Coding hacks, JavaScript tutorials, Frontend development tips, Programming techniques, JavaScript projects, Code snippets, Web development shortcuts, JavaScript innovations, DOM manipulation techniques, JavaScript best practices",
+    "JavaScript, web development, JavaScript hacks, JavaScript tricks, JavaScript tips, Web development tricks, Coding hacks, JavaScript tutorials, Frontend development tips, Programming techniques, JavaScript projects, Code snippets, Web development shortcuts, JavaScript innovations, DOM manipulation techniques, JavaScript best practices, JavaScript tricks submission, JavaScript coding tips, Submit JavaScript hack, Share JavaScript hacks, JavaScript hacks community, JavaScript programming techniques, User-contributed JavaScript hacks, JavaScript code snippets, Web development tricks submission, Coding hacks forum, JavaScript development tips exchange, Collaborative JavaScript hacks, JavaScript community contributions, Innovative JavaScript techniques, User-generated JavaScript solutions, Code Game, Tutorials, Programming, Web Development, Training, Learning, Quiz, Exercises, Courses, Lessons, References, Examples, Learn to code, Source code, Demos, Tips, Website",
 };
 
 export const addNewSeo = {
