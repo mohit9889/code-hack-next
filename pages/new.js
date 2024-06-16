@@ -7,8 +7,15 @@ import { initialCode, languages } from "~/utils/utilities";
 import SendSvg from "~/public/icons/send.svg";
 import WarningSvg from "~/public/icons/warning.svg";
 import toast from "react-hot-toast";
+import { useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import Heading from "@tiptap/extension-heading";
+import Highlight from "@tiptap/extension-highlight";
+import BulletList from "@tiptap/extension-bullet-list";
+import OrderedList from "@tiptap/extension-ordered-list";
+import ListItem from "@tiptap/extension-list-item";
 
-const Heading = dynamic(() =>
+const CustomHeading = dynamic(() =>
   import(
     /* webpackChunkName: "Heading" */
     "~/components/Heading"
@@ -48,6 +55,44 @@ const New = () => {
     setCode(newCode);
   };
 
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({}),
+      Heading.configure({
+        HTMLAttributes: {
+          class: "font-bold",
+          level: [2],
+        },
+      }),
+      Highlight.configure({
+        HTMLAttributes: {
+          class: "bg-black-primary bg-opacity-20 rounded-md",
+        },
+      }),
+      BulletList.configure({
+        HTMLAttributes: {
+          class: "list-disc pl-5",
+        },
+      }),
+      OrderedList.configure({
+        HTMLAttributes: {
+          class: "list-decimal pl-5",
+        },
+      }),
+      ListItem,
+    ],
+    content: description,
+    editorProps: {
+      attributes: {
+        class:
+          "p-2 rounded-lg outline-none focus:border bg-white min-h-[100px]",
+      },
+    },
+    onUpdate({ editor }) {
+      setDescription(editor.getHTML());
+    },
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -63,6 +108,7 @@ const New = () => {
       e.target.reset();
       setCode(initialCode);
       setDescription("");
+      editor.commands.clearContent();
       toast("Hack submitted! May the code be with you... always.", {
         style: {
           borderRadius: "10px",
@@ -81,7 +127,7 @@ const New = () => {
       <SEO {...{ ...addNewSeo }} />
       <div className="new-trick-page my-5">
         <BackButton />
-        <Heading
+        <CustomHeading
           heading="Your #1 JavaScript hack?"
           customClasses="!justify-start mt-4"
         />
@@ -111,10 +157,7 @@ const New = () => {
               rows={4}
               className="p-2 rounded-lg outline-none focus:border"
             /> */}
-            <TextEditor
-              description={description}
-              setDescription={setDescription}
-            />
+            <TextEditor editor={editor} />
           </div>
           {/* Code Editor */}
           <div className="mt-7 flex flex-col">

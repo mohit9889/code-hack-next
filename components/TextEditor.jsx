@@ -1,10 +1,4 @@
-import { useEditor, EditorContent } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
-import Heading from "@tiptap/extension-heading";
-import Highlight from "@tiptap/extension-highlight";
-import BulletList from "@tiptap/extension-bullet-list";
-import OrderedList from "@tiptap/extension-ordered-list";
-import ListItem from "@tiptap/extension-list-item";
+import { EditorContent } from "@tiptap/react";
 import {
   Bold,
   Italic,
@@ -72,45 +66,8 @@ const ToolBar = ({ editor }) => {
   );
 };
 
-const TextEditor = ({ description = "", setDescription = () => {} }) => {
-  const editor = useEditor({
-    extensions: [
-      StarterKit.configure({}),
-      Heading.configure({
-        HTMLAttributes: {
-          class: "font-bold",
-          level: [2],
-        },
-      }),
-      Highlight.configure({
-        HTMLAttributes: {
-          class: "bg-black-primary bg-opacity-20 rounded-md",
-        },
-      }),
-      BulletList.configure({
-        HTMLAttributes: {
-          class: "list-disc pl-5",
-        },
-      }),
-      OrderedList.configure({
-        HTMLAttributes: {
-          class: "list-decimal pl-5",
-        },
-      }),
-      ListItem,
-    ],
-    content: description,
-    editorProps: {
-      attributes: {
-        class:
-          "p-2 rounded-lg outline-none focus:border bg-white min-h-[100px]",
-      },
-    },
-    onUpdate({ editor }) {
-      setDescription(editor.getHTML());
-    },
-  });
-
+const TextEditor = ({ editor }) => {
+  if (!editor) return <></>;
   return (
     <div className="flex flex-col">
       <ToolBar editor={editor} />
