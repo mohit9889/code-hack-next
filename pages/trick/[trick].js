@@ -163,7 +163,11 @@ const Trick = ({ trickData = {} }) => {
             </div>
             <LikeDisLike likeCount={like_count} trickId={id} />
           </div>
-          <p className="mt-3">{description}</p>
+          {/*   <p className="mt-3">{description}</p> */}
+          <div
+            className="mt-3"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </div>
 
         {/* Display code */}

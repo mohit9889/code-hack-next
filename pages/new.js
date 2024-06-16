@@ -32,10 +32,17 @@ const Tooltip = dynamic(() =>
     "~/components/Tooltip"
   )
 );
+const TextEditor = dynamic(() =>
+  import(
+    /* webpackChunkName: "TextEditor" */
+    "~/components/TextEditor"
+  )
+);
 
 const New = () => {
   const currentCodeLang = languages[0].name.toLowerCase();
   const [code, setCode] = useState(initialCode);
+  const [description, setDescription] = useState("");
 
   const handleCodeChange = (newCode) => {
     setCode(newCode);
@@ -47,6 +54,7 @@ const New = () => {
       const formData = new FormData(e.target);
       const formDataObj = Object.fromEntries(formData.entries());
       formDataObj.code_lang = currentCodeLang;
+      formDataObj.description = description;
       if (code !== initialCode) {
         formDataObj.code = code;
       }
@@ -54,6 +62,7 @@ const New = () => {
       // Reset the form after successful submission
       e.target.reset();
       setCode(initialCode);
+      setDescription("");
       toast("Hack submitted! May the code be with you... always.", {
         style: {
           borderRadius: "10px",
@@ -96,11 +105,15 @@ const New = () => {
             <label htmlFor="description" className="mb-3">
               <span className="text-sm">Description</span>
             </label>
-            <textarea
+            {/* <textarea
               name="description"
               placeholder="Description"
               rows={4}
               className="p-2 rounded-lg outline-none focus:border"
+            /> */}
+            <TextEditor
+              description={description}
+              setDescription={setDescription}
             />
           </div>
           {/* Code Editor */}
