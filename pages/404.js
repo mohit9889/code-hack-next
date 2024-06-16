@@ -1,8 +1,15 @@
 import React from "react";
 import Link from "next/link";
-import Heading from "~/components/Heading";
+import dynamic from "next/dynamic";
 import SEO from "~/components/SEO";
 import { pageNotFoundSeo } from "~/utils/seo";
+
+const Heading = dynamic(() =>
+  import(
+    /* webpackChunkName: "Heading" */
+    "~/components/Heading"
+  )
+);
 
 const ErrorPage = () => {
   return (

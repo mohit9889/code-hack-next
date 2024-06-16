@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Heading from "~/components/Heading";
-import Tabs from "~/components/Tabs";
-import TrickCard from "~/components/TrickCard";
 import {
   getAllHotTricksData,
   getAllNewTricksData,
@@ -13,6 +11,25 @@ import { tabs } from "~/utils/utilities";
 import SEO from "~/components/SEO";
 import { homeSeo } from "~/utils/seo";
 import AddSvg from "~/public/icons/add.svg";
+
+const Heading = dynamic(() =>
+  import(
+    /* webpackChunkName: "Heading" */
+    "~/components/Heading"
+  )
+);
+const Tabs = dynamic(() =>
+  import(
+    /* webpackChunkName: "Tabs" */
+    "~/components/Tabs"
+  )
+);
+const TrickCard = dynamic(() =>
+  import(
+    /* webpackChunkName: "TrickCard" */
+    "~/components/TrickCard"
+  )
+);
 
 const SHOW_ADD_TRICK_BUTTON_ON_INDEX = [4, 11];
 

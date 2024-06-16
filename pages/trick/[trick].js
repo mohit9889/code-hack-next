@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { getSingleTrickData, reportHack, visitedHack } from "~/api";
-import Heading from "~/components/Heading";
-import BackButton from "~/components/BackButton";
-import CodeDisplay from "~/components/CodeDisplay";
-import ShareButton from "~/components/Share";
-import LikeDisLike from "~/components/LikeDisLike";
-import CommentForm from "~/components/CommentForm";
-import Comments from "~/components/Comments";
 import SEO from "~/components/SEO";
 import {
   getFromSessionStorage,
@@ -15,6 +9,49 @@ import {
 import { trickSeo } from "~/utils/seo";
 import { formatDate, getTrickURL } from "~/utils/utilities";
 import toast from "react-hot-toast";
+
+const Heading = dynamic(() =>
+  import(
+    /* webpackChunkName: "Heading" */
+    "~/components/Heading"
+  )
+);
+const BackButton = dynamic(() =>
+  import(
+    /* webpackChunkName: "BackButton" */
+    "~/components/BackButton"
+  )
+);
+const CodeDisplay = dynamic(() =>
+  import(
+    /* webpackChunkName: "CodeDisplay" */
+    "~/components/CodeDisplay"
+  )
+);
+const ShareButton = dynamic(() =>
+  import(
+    /* webpackChunkName: "ShareButton" */
+    "~/components/Share"
+  )
+);
+const LikeDisLike = dynamic(() =>
+  import(
+    /* webpackChunkName: "LikeDisLike" */
+    "~/components/LikeDisLike"
+  )
+);
+const CommentForm = dynamic(() =>
+  import(
+    /* webpackChunkName: "CommentForm" */
+    "~/components/CommentForm"
+  )
+);
+const Comments = dynamic(() =>
+  import(
+    /* webpackChunkName: "Comments" */
+    "~/components/Comments"
+  )
+);
 
 const Trick = ({ trickData = {} }) => {
   const {

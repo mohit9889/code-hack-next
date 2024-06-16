@@ -56,9 +56,9 @@ const TrickCard = ({ index, trick = {} }) => {
               <span className="mr-2 text-xl font-bold opacity-75">
                 {index}.
               </span>
-              <h4 className="font-semibold hover:opacity-75 leading-7">
+              <h2 className="font-semibold hover:opacity-75 leading-7">
                 {title}
-              </h4>
+              </h2>
             </div>
           </Link>
           {/* Extra Details */}

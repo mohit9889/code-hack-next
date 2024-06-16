@@ -1,15 +1,37 @@
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import { submitHack } from "~/api";
-import Heading from "~/components/Heading";
-import BackButton from "~/components/BackButton";
-import CodeEditor from "~/components/CodeEditor";
-import Tooltip from "~/components/Tooltip";
 import SEO from "~/components/SEO";
 import { addNewSeo } from "~/utils/seo";
 import { initialCode, languages } from "~/utils/utilities";
 import SendSvg from "~/public/icons/send.svg";
 import WarningSvg from "~/public/icons/warning.svg";
 import toast from "react-hot-toast";
+
+const Heading = dynamic(() =>
+  import(
+    /* webpackChunkName: "Heading" */
+    "~/components/Heading"
+  )
+);
+const BackButton = dynamic(() =>
+  import(
+    /* webpackChunkName: "BackButton" */
+    "~/components/BackButton"
+  )
+);
+const CodeEditor = dynamic(() =>
+  import(
+    /* webpackChunkName: "CodeEditor" */
+    "~/components/CodeEditor"
+  )
+);
+const Tooltip = dynamic(() =>
+  import(
+    /* webpackChunkName: "Tooltip" */
+    "~/components/Tooltip"
+  )
+);
 
 const New = () => {
   const currentCodeLang = languages[0].name.toLowerCase();

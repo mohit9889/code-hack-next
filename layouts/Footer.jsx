@@ -55,7 +55,7 @@ const Footer = () => {
       <div className="flex justify-between">
         {Object.entries(footerData).map(([key, value]) => (
           <div key={key} className="flex flex-col">
-            <h4 className="font-bold opacity-75 mb-4">{key}</h4>
+            <h3 className="font-bold opacity-75 mb-4">{key}</h3>
             {value.map((_val, index) =>
               _val.query ? (
                 <span
