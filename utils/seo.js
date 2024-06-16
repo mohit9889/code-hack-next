@@ -2,7 +2,7 @@ export const homeSeo = {
   title:
     "JavaScript Hacks & Tricks: Hot, New, and Top Tricks | Your Go-To Resource",
   description:
-    "Explore the latest JavaScript hacks and tricks on our website. Discover the hottest, newest, and top-rated tricks to level up your coding game. Join our community of developers today!",
+    "Find the newest JavaScript hacks and tricks to boost your coding skills. Join our developer community to learn, share, and advance your programming expertise today!",
   ogImage: "/img/js-logo.png",
   canonical: "https://jshack.fun/",
   keywords:
@@ -12,7 +12,7 @@ export const homeSeo = {
 export const addNewSeo = {
   title: "Add New JavaScript Hack: Share Your Coding Genius | JSHack",
   description:
-    "Contribute to the JavaScript developer community by sharing your latest hack! Submit your innovative coding tricks and join other developers in expanding our library of JavaScript solutions. Start sharing your genius today!",
+    "Join our JavaScript community by sharing your latest hack! Submit coding tricks, connect with developers, and help grow our library of solutions. Start sharing today!",
   ogImage: "/img/js-logo.png",
   canonical: "https://jshack.fun/new",
   keywords:
@@ -21,7 +21,7 @@ export const addNewSeo = {
 
 export const trickSeo = {
   description:
-    "Discover a treasure trove of JavaScript hacks! Browse through a diverse collection of coding solutions contributed by developers worldwide. Find the perfect hack to solve your coding challenges and level up your JavaScript skills.",
+    "Find the newest JavaScript hacks and tricks to boost your coding skills. Join our developer community to learn, share, and advance your programming expertise today!",
   ogImage: "/img/js-logo.png",
   keywords:
     "JavaScript hacks showcase, Explore JavaScript tricks, JavaScript coding inspiration, Discover JavaScript hacks, JavaScript tips repository, JavaScript hacks library, Browse JavaScript techniques, JavaScript solutions gallery, Web development tricks collection, JavaScript code snippets archive, JavaScript hackathon submissions, User-generated JavaScript innovations, JavaScript community contributions, Latest JavaScript hacks, Popular JavaScript tricks",
@@ -30,7 +30,7 @@ export const trickSeo = {
 export const aboutMeSeo = {
   title: "About Mohit Rajput: Discover My Story Soon | JSHack",
   description:
-    "Stay tuned to learn more about Mohit Rajput! My about page is coming soon, where you'll uncover the inspiration behind this platform and the vision driving mission. Join me on journey to revolutionize the world of JavaScript hacks and tricks.",
+    "Stay tuned to discover more about Mohit Rajput! My about page is coming soon. Join me in revolutionizing JavaScript hacks and tricks with the inspiration behind this platform.",
   ogImage: "/img/js-logo.png",
   canonical: "https://jshack.fun/about-me",
   keywords:

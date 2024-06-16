@@ -97,22 +97,28 @@ export default function Home({ tricksData }) {
           ))}
         </div>
 
-        <p className="mt-4 font-medium text-center">
-          {currentTabData.length > 0
-            ? `The end is near... of this list! But fear not, there's always more!`
-            : "Welcome to the blank canvas! Your hack is the first stroke in our masterpiece of information."}
-        </p>
-        <div className="flex mt-4 items-center justify-center">
-          <Link
-            href="/new"
-            as="/new"
-            className="add-trick flex items-center bg-orange hover:bg-[#c2410c] rounded-lg p-3 text-white text-base font-semibold"
-          >
-            <span className="icon icon-white mr-1">
-              <AddSvg />
-            </span>
-            New Trick
-          </Link>
+        <div
+          className={`flex flex-col ${
+            currentTabData.length > 0 ? "" : "min-h-[500px]"
+          }`}
+        >
+          <p className="mt-4 font-medium text-center">
+            {currentTabData.length > 0
+              ? `The end is near... of this list! But fear not, there's always more!`
+              : "Welcome to the blank canvas! Your hack is the first stroke in our masterpiece of information."}
+          </p>
+          <div className="flex mt-4 items-center justify-center">
+            <Link
+              href="/new"
+              as="/new"
+              className="add-trick flex items-center bg-orange hover:bg-[#c2410c] rounded-lg p-3 text-white text-base font-semibold"
+            >
+              <span className="icon icon-white mr-1">
+                <AddSvg />
+              </span>
+              New Trick
+            </Link>
+          </div>
         </div>
       </div>
     </>

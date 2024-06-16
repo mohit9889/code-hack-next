@@ -45,7 +45,7 @@ const CommentForm = ({
 
   return (
     <div className={`flex flex-col mt-16 ${customClasses}`}>
-      {showHeading && <h1 className="mb-3 text-xl font-bold">Add a Comment</h1>}
+      {showHeading && <h2 className="mb-3 text-xl font-bold">Add a Comment</h2>}
       <form onSubmit={handleFormSubmit}>
         <textarea
           required

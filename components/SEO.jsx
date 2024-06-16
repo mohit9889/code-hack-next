@@ -26,6 +26,9 @@ const SEO = ({ title, description, ogImage, keywords, canonical = "" }) => {
 
       {/* canonical */}
       <link rel="canonical" href={canonicalUrl} />
+      {/* other meta tags */}
+      <meta name="theme-color" content="#E3E3E3"></meta>
+      <link rel="apple-touch-icon" sizes="180x180" href="/img/js-logo.png" />
     </Head>
   );
 };

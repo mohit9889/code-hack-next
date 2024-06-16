@@ -101,7 +101,7 @@ const Comment = ({
 const Comments = ({ commentsData = [], hackId = "", handleSetCommentData }) => {
   return (
     <div className="my-7">
-      <h1 className="mb-3 text-xl font-bold">Comments</h1>
+      <h2 className="mb-3 text-xl font-bold">Comments</h2>
       {commentsData.length > 0 ? (
         commentsData.map((comment, index) => (
           <>
