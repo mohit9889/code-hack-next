@@ -1,48 +1,47 @@
 export const homeSeo = {
-  title:
-    "JavaScript Hacks & Tricks: Hot, New, and Top Tricks | Your Go-To Resource",
+  title: "Top JavaScript Hacks & Tricks: Boost Your Coding Skills | JSHack",
   description:
-    "Find the newest JavaScript hacks and tricks to boost your coding skills. Join our developer community to learn, share, and advance your programming expertise today!",
+    "Explore the latest JavaScript hacks and tricks to enhance your coding skills. Join our developer community to learn, share, and advance your programming expertise today!",
   ogImage: "/img/js-logo.png",
   canonical: "https://jshack.fun/",
   keywords:
-    "JavaScript, web development, JavaScript hacks, JavaScript tricks, JavaScript tips, Web development tricks, Coding hacks, JavaScript tutorials, Frontend development tips, Programming techniques, JavaScript projects, Code snippets, Web development shortcuts, JavaScript innovations, DOM manipulation techniques, JavaScript best practices, JavaScript tricks submission, JavaScript coding tips, Submit JavaScript hack, Share JavaScript hacks, JavaScript hacks community, JavaScript programming techniques, User-contributed JavaScript hacks, JavaScript code snippets, Web development tricks submission, Coding hacks forum, JavaScript development tips exchange, Collaborative JavaScript hacks, JavaScript community contributions, Innovative JavaScript techniques, User-generated JavaScript solutions, Code Game, Tutorials, Programming, Web Development, Training, Learning, Quiz, Exercises, Courses, Lessons, References, Examples, Learn to code, Source code, Demos, Tips, Website",
+    "JavaScript hacks, JavaScript tricks, web development, coding tips, JavaScript tutorials, frontend development, coding hacks, programming techniques, code snippets, web development shortcuts, JavaScript projects, DOM manipulation, JavaScript best practices, coding community, developer resources, learn JavaScript, share JavaScript tips, collaborative coding, innovative coding techniques",
 };
 
 export const addNewSeo = {
-  title: "Add New JavaScript Hack: Share Your Coding Genius | JSHack",
+  title: "Share Your JavaScript Hack: Contribute to JSHack",
   description:
-    "Join our JavaScript community by sharing your latest hack! Submit coding tricks, connect with developers, and help grow our library of solutions. Start sharing today!",
+    "Submit your latest JavaScript hack and join our community of developers. Share coding tricks, connect with peers, and help expand our library of innovative solutions!",
   ogImage: "/img/js-logo.png",
   canonical: "https://jshack.fun/new",
   keywords:
-    "JavaScript, web development, JavaScript hacks, JavaScript tricks, JavaScript tips, Web development tricks, Coding hacks, JavaScript tutorials, Frontend development tips, Programming techniques, JavaScript projects, Code snippets, Web development shortcuts, JavaScript innovations, DOM manipulation techniques, JavaScript best practices, JavaScript tricks submission, JavaScript coding tips, Submit JavaScript hack, Share JavaScript hacks, JavaScript hacks community, JavaScript programming techniques, User-contributed JavaScript hacks, JavaScript code snippets, Web development tricks submission, Coding hacks forum, JavaScript development tips exchange, Collaborative JavaScript hacks, JavaScript community contributions, Innovative JavaScript techniques, User-generated JavaScript solutions",
+    "Submit JavaScript hack, share coding tricks, JavaScript community, web development tips, JavaScript tutorials, coding hacks, programming techniques, JavaScript projects, code snippets, frontend development, collaborative coding, innovative solutions, developer resources, JavaScript best practices, coding tips exchange",
 };
 
 export const trickSeo = {
   description:
-    "Find the newest JavaScript hacks and tricks to boost your coding skills. Join our developer community to learn, share, and advance your programming expertise today!",
+    "Discover the latest JavaScript hacks and tricks to improve your coding skills. Join our community to learn, share, and grow your programming expertise!",
   ogImage: "/img/js-logo.png",
   keywords:
-    "JavaScript hacks showcase, Explore JavaScript tricks, JavaScript coding inspiration, Discover JavaScript hacks, JavaScript tips repository, JavaScript hacks library, Browse JavaScript techniques, JavaScript solutions gallery, Web development tricks collection, JavaScript code snippets archive, JavaScript hackathon submissions, User-generated JavaScript innovations, JavaScript community contributions, Latest JavaScript hacks, Popular JavaScript tricks",
+    "JavaScript hacks, JavaScript tricks, coding inspiration, JavaScript tips, JavaScript techniques, web development tricks, coding solutions, JavaScript code snippets, innovative JavaScript, developer community, JavaScript hackathon, coding library, user-generated hacks, popular JavaScript tricks, programming tips",
 };
 
 export const aboutMeSeo = {
-  title: "About Mohit Rajput: Discover My Story Soon | JSHack",
+  title: "About Mohit Rajput: My JavaScript Journey | JSHack",
   description:
-    "Stay tuned to discover more about Mohit Rajput! My about page is coming soon. Join me in revolutionizing JavaScript hacks and tricks with the inspiration behind this platform.",
+    "Learn more about Mohit Rajput and his passion for JavaScript. Stay tuned for my story and join me in revolutionizing JavaScript hacks and tricks.",
   ogImage: "/img/js-logo.png",
   canonical: "https://jshack.fun/about-me",
   keywords:
-    "JavaScript enthusiast, JavaScript aficionado, JavaScript expert, JavaScript innovator, JavaScript guru, JavaScript wizard, JavaScript developer, JavaScript storyteller, JavaScript journey, JavaScript passion, JavaScript journeyman, JavaScript visionary, JavaScript evangelist, JavaScript pioneer, JavaScript maestro",
+    "Mohit Rajput, JavaScript developer, coding journey, JavaScript enthusiast, JavaScript expert, web development, JavaScript innovation, coding passion, programming visionary, JavaScript storyteller, developer biography, coding inspiration, JavaScript community leader",
 };
 
 export const pageNotFoundSeo = {
   title: "404 Error: Page Not Found | JSHack",
   description:
-    "Oops! You've reached a page that doesn't exist. Don't worry, it happens to the best of us. Explore our site navigation or return to the homepage to continue your journey. We apologize for the inconvenience.",
+    "Sorry, the page you're looking for doesn't exist. Navigate back to our homepage or explore our site to find what you need. We apologize for the inconvenience.",
   ogImage: "/img/js-logo.png",
   canonical: "https://jshack.fun/404",
   keywords:
-    "JavaScript resources, JavaScript tutorials, JavaScript tricks, JavaScript hacks, Web development tips, Coding techniques, Frontend development, JavaScript community, JavaScript projects, JavaScript inspiration, JavaScript learning, JavaScript community, Coding community, Web development community, JavaScript enthusiasts",
+    "404 error, page not found, JavaScript resources, coding tutorials, JavaScript tricks, web development, coding tips, JavaScript community, developer resources, programming help, web development community, JavaScript learning, coding support, developer tips",
 };
