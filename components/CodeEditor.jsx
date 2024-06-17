@@ -41,6 +41,7 @@ const CodeEditor = ({ code, handleCodeChange }) => {
           editorProps={{ $blockScrolling: true }}
           className="ace-editor-container rounded"
           onChange={handleCodeChange}
+          placeholder="Write or Paste your code here!"
         />
       </div>
     </div>

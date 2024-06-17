@@ -9,7 +9,7 @@ export const themes = ["monokai"];
 
 export const backgrounds = ["linear-gradient(to right, #8360c3, #2ebf91)"];
 
-export const initialCode = `// Write or Paste your code!`;
+export const initialCode = ``;
 
 export const tabs = [
   { link: "hot", title: "Hot" },
