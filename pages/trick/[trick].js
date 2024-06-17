@@ -131,7 +131,11 @@ const Trick = ({ trickData = {} }) => {
         <div className="bg-white p-3 rounded-lg mb-4 mt-3">
           <div className="flex justify-between">
             <div className="flex flex-col">
-              <Heading heading={title} customClasses="!justify-start" />
+              <Heading
+                heading={title}
+                customClasses="!justify-start"
+                headingClasses="!text-left"
+              />
               {/* Extra Details */}
               <div className="flex text-xs opacity-70 mt-2 flex-wrap">
                 <span>
@@ -165,7 +169,7 @@ const Trick = ({ trickData = {} }) => {
           </div>
           {/*   <p className="mt-3">{description}</p> */}
           <div
-            className="mt-3"
+            className="mt-3 content"
             dangerouslySetInnerHTML={{ __html: description }}
           />
         </div>
