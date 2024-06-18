@@ -27,7 +27,7 @@ const ShareButton = ({ url, customClass }) => {
               background: "#323643",
               color: "#fff",
             },
-          }
+          },
         );
       } catch (err) {
         console.log("Failed to Copy", err);

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -12,23 +13,26 @@ import SEO from "~/components/SEO";
 import { homeSeo } from "~/utils/seo";
 import AddSvg from "~/public/icons/add.svg";
 
-const Heading = dynamic(() =>
-  import(
-    /* webpackChunkName: "Heading" */
-    "~/components/Heading"
-  )
+const Heading = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "Heading" */
+      "~/components/Heading"
+    ),
 );
-const Tabs = dynamic(() =>
-  import(
-    /* webpackChunkName: "Tabs" */
-    "~/components/Tabs"
-  )
+const Tabs = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "Tabs" */
+      "~/components/Tabs"
+    ),
 );
-const TrickCard = dynamic(() =>
-  import(
-    /* webpackChunkName: "TrickCard" */
-    "~/components/TrickCard"
-  )
+const TrickCard = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "TrickCard" */
+      "~/components/TrickCard"
+    ),
 );
 
 const SHOW_ADD_TRICK_BUTTON_ON_INDEX = [4, 11];
@@ -127,7 +131,7 @@ export default function Home({ tricksData }) {
 
 export async function getServerSideProps() {
   const [allTricksData, allNewTricksData, allTopTricksData] = await Promise.all(
-    [getAllHotTricksData(), getAllNewTricksData(), getAllTopTricksData()]
+    [getAllHotTricksData(), getAllNewTricksData(), getAllTopTricksData()],
   );
   const response = {
     hot: allTricksData,

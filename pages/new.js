@@ -16,35 +16,40 @@ import OrderedList from "@tiptap/extension-ordered-list";
 import ListItem from "@tiptap/extension-list-item";
 import Link from "@tiptap/extension-link";
 
-const CustomHeading = dynamic(() =>
-  import(
-    /* webpackChunkName: "Heading" */
-    "~/components/Heading"
-  )
+const CustomHeading = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "Heading" */
+      "~/components/Heading"
+    ),
 );
-const BackButton = dynamic(() =>
-  import(
-    /* webpackChunkName: "BackButton" */
-    "~/components/BackButton"
-  )
+const BackButton = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "BackButton" */
+      "~/components/BackButton"
+    ),
 );
-const CodeEditor = dynamic(() =>
-  import(
-    /* webpackChunkName: "CodeEditor" */
-    "~/components/CodeEditor"
-  )
+const CodeEditor = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "CodeEditor" */
+      "~/components/CodeEditor"
+    ),
 );
-const Tooltip = dynamic(() =>
-  import(
-    /* webpackChunkName: "Tooltip" */
-    "~/components/Tooltip"
-  )
+const Tooltip = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "Tooltip" */
+      "~/components/Tooltip"
+    ),
 );
-const TextEditor = dynamic(() =>
-  import(
-    /* webpackChunkName: "TextEditor" */
-    "~/components/TextEditor"
-  )
+const TextEditor = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "TextEditor" */
+      "~/components/TextEditor"
+    ),
 );
 
 const New = () => {

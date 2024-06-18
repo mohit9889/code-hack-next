@@ -167,7 +167,7 @@ export const likeComment = async (hackId, commentId) => {
       `${API_BASE_PATH}/hacks/${hackId}/comments/${commentId}/like`,
       {
         method: "POST",
-      }
+      },
     );
     if (!response.ok) {
       throw new Error("Failed to like the comment");
@@ -186,7 +186,7 @@ export const dislikeComment = async (hackId, commentId) => {
       `${API_BASE_PATH}/hacks/${hackId}/comments/${commentId}/dislike`,
       {
         method: "POST",
-      }
+      },
     );
     if (!response.ok) {
       throw new Error("Failed to dislike the comment");

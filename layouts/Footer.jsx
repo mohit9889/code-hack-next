@@ -25,7 +25,7 @@ const Footer = () => {
         query: _val.query,
       },
       undefined,
-      { shallow: true }
+      { shallow: true },
     );
   };
 
@@ -71,7 +71,7 @@ const Footer = () => {
                     {_val.title}
                   </span>
                 </Link>
-              )
+              ),
             )}
           </div>
         ))}

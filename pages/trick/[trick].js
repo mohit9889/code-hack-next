@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { getSingleTrickData, reportHack, visitedHack } from "~/api";
@@ -10,47 +11,54 @@ import { trickSeo } from "~/utils/seo";
 import { formatDate, getTrickURL } from "~/utils/utilities";
 import toast from "react-hot-toast";
 
-const Heading = dynamic(() =>
-  import(
-    /* webpackChunkName: "Heading" */
-    "~/components/Heading"
-  )
+const Heading = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "Heading" */
+      "~/components/Heading"
+    ),
 );
-const BackButton = dynamic(() =>
-  import(
-    /* webpackChunkName: "BackButton" */
-    "~/components/BackButton"
-  )
+const BackButton = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "BackButton" */
+      "~/components/BackButton"
+    ),
 );
-const CodeDisplay = dynamic(() =>
-  import(
-    /* webpackChunkName: "CodeDisplay" */
-    "~/components/CodeDisplay"
-  )
+const CodeDisplay = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "CodeDisplay" */
+      "~/components/CodeDisplay"
+    ),
 );
-const ShareButton = dynamic(() =>
-  import(
-    /* webpackChunkName: "ShareButton" */
-    "~/components/Share"
-  )
+const ShareButton = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "ShareButton" */
+      "~/components/Share"
+    ),
 );
-const LikeDisLike = dynamic(() =>
-  import(
-    /* webpackChunkName: "LikeDisLike" */
-    "~/components/LikeDisLike"
-  )
+const LikeDisLike = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "LikeDisLike" */
+      "~/components/LikeDisLike"
+    ),
 );
-const CommentForm = dynamic(() =>
-  import(
-    /* webpackChunkName: "CommentForm" */
-    "~/components/CommentForm"
-  )
+const CommentForm = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "CommentForm" */
+      "~/components/CommentForm"
+    ),
 );
-const Comments = dynamic(() =>
-  import(
-    /* webpackChunkName: "Comments" */
-    "~/components/Comments"
-  )
+const Comments = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "Comments" */
+      "~/components/Comments"
+    ),
 );
 
 const Trick = ({ trickData = {} }) => {
@@ -94,7 +102,7 @@ const Trick = ({ trickData = {} }) => {
 
     if (commentId) {
       const commentIndex = updatedComments.findIndex(
-        (c) => c._id === commentId
+        (c) => c._id === commentId,
       );
       if (commentIndex !== -1) {
         updatedComments[commentIndex].replies = [

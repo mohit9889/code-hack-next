@@ -32,7 +32,7 @@ const Tabs = ({
         query: { ...router.query, tab: tab.link },
       },
       undefined,
-      { shallow: true }
+      { shallow: true },
     );
     handleTabStateChange(tab);
   };

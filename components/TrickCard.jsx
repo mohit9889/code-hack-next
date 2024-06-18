@@ -22,7 +22,7 @@ const TrickCard = ({ index, trick = {} }) => {
 
   const [isHackReported, setIsHackReported] = useState(false);
   const [showOffensiveHack, setShowOffensiveHack] = useState(
-    offensive_score <= 1 ? false : true
+    offensive_score <= 1 ? false : true,
   );
   const url = getTrickURL(title, id);
 
