@@ -14,6 +14,7 @@ import Highlight from "@tiptap/extension-highlight";
 import BulletList from "@tiptap/extension-bullet-list";
 import OrderedList from "@tiptap/extension-ordered-list";
 import ListItem from "@tiptap/extension-list-item";
+import Link from "@tiptap/extension-link";
 
 const CustomHeading = dynamic(() =>
   import(
@@ -80,6 +81,11 @@ const New = () => {
         },
       }),
       ListItem,
+      Link.configure({
+        openOnClick: false,
+        autolink: true,
+        defaultProtocol: "https",
+      }),
     ],
     content: description,
     editorProps: {
