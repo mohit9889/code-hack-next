@@ -37,6 +37,7 @@ const ToolBar = ({ editor }) => {
   return (
     <div className="p-2 rounded-lg bg-white mb-2 flex gap-2 items-center">
       <button
+        aria-label="Heading 2"
         className={`hover:bg-black-primary hover:bg-opacity-20 p-1 rounded-lg ${
           editor.isActive("heading", { level: 2 })
             ? "bg-black-primary bg-opacity-20"
@@ -49,6 +50,7 @@ const ToolBar = ({ editor }) => {
       </button>
 
       <button
+        aria-label="Bold"
         className={`hover:bg-black-primary hover:bg-opacity-20 p-1 rounded-lg ${
           editor.isActive("bold") ? "bg-black-primary bg-opacity-20" : ""
         }`}
@@ -58,6 +60,7 @@ const ToolBar = ({ editor }) => {
         <Bold className="w-4 h-4" />
       </button>
       <button
+        aria-label="Italic"
         className={`hover:bg-black-primary hover:bg-opacity-20 p-1 rounded-lg ${
           editor.isActive("italic") ? "bg-black-primary bg-opacity-20" : ""
         }`}
@@ -67,6 +70,7 @@ const ToolBar = ({ editor }) => {
         <Italic className="w-4 h-4" />
       </button>
       <button
+        aria-label="Bullet List"
         className={`hover:bg-black-primary hover:bg-opacity-20 p-1 rounded-lg ${
           editor.isActive("bulletList") ? "bg-black-primary bg-opacity-20" : ""
         }`}
@@ -76,6 +80,7 @@ const ToolBar = ({ editor }) => {
         <List className="w-4 h-4" />
       </button>
       <button
+        aria-label="Ordered List"
         className={`hover:bg-black-primary hover:bg-opacity-20 p-1 rounded-lg ${
           editor.isActive("orderedList") ? "bg-black-primary bg-opacity-20" : ""
         }`}
@@ -85,6 +90,7 @@ const ToolBar = ({ editor }) => {
         <ListOrdered className="w-4 h-4" />
       </button>
       <button
+        aria-label="Highlight"
         className={`hover:bg-black-primary hover:bg-opacity-20 p-1 rounded-lg ${
           editor.isActive("highlight") ? "bg-black-primary bg-opacity-20" : ""
         }`}
@@ -94,6 +100,7 @@ const ToolBar = ({ editor }) => {
         <Highlighter className="w-4 h-4" />
       </button>
       <button
+        aria-label="Link"
         className={`hover:bg-black-primary hover:bg-opacity-20 p-1 rounded-lg ${
           editor.isActive("link") ? "bg-black-primary bg-opacity-20" : ""
         }`}
@@ -103,7 +110,8 @@ const ToolBar = ({ editor }) => {
         <Link className="w-4 h-4" />
       </button>
       <button
-        className={`hover:bg-black-primary hover:bg-opacity-20 p-1 rounded-lg`}
+        aria-label="Unlink"
+        className="hover:bg-black-primary hover:bg-opacity-20 p-1 rounded-lg"
         title="Unlink"
         onClick={() => editor.chain().focus().unsetLink().run()}
       >
@@ -116,7 +124,7 @@ const ToolBar = ({ editor }) => {
 const TextEditor = ({ editor }) => {
   if (!editor) return <></>;
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-[148px]">
       <ToolBar editor={editor} />
       <EditorContent editor={editor} />
     </div>
