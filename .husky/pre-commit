@@ -1,4 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npx lint-staged
+echo "🔍 Running Pre-Commit Hooks..."
+npx lint-staged  # Run lint-staged (set up in Step 4)
