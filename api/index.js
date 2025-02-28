@@ -1,234 +1,78 @@
+/**
+ * API service for handling hack-related operations.
+ */
 const API_BASE_PATH = process.env.API_BASE_URL;
 
-export const getAllTricksData = async () => {
+/**
+ * Generic function to make API requests.
+ * @param {string} endpoint - The API endpoint.
+ * @param {string} [method='GET'] - HTTP method.
+ * @param {Object} [body=null] - Request body (for POST, PUT, DELETE).
+ * @returns {Promise<any>} - Response data.
+ */
+const fetchAPI = async (endpoint, method = 'GET', body = null) => {
   try {
-    const res = await fetch(`${API_BASE_PATH}/hacks`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
-    const data = await res.json();
-    return data;
+    const options = {
+      method,
+      headers: { 'Content-Type': 'application/json' },
+      ...(body && { body: JSON.stringify(body) }),
+    };
+
+    const response = await fetch(`${API_BASE_PATH}${endpoint}`, options);
+    if (!response.ok) throw new Error(`API Error: ${response.statusText}`);
+    return await response.json();
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error(`Error in fetchAPI (${method} ${endpoint}):`, error);
     throw error;
   }
 };
 
-export const getSingleTrickData = async (id = "") => {
-  try {
-    const res = await fetch(`${API_BASE_PATH}/hacks/${id}`);
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error;
-  }
-};
+/** Fetch all hacks */
+export const getAllTricksData = () => fetchAPI('/hacks');
 
-export const getAllNewTricksData = async () => {
-  try {
-    const res = await fetch(`${API_BASE_PATH}/hacks/new`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error;
-  }
-};
+/** Fetch a single hack by ID */
+export const getSingleTrickData = (id) => fetchAPI(`/hacks/${id}`);
 
-export const getAllTopTricksData = async () => {
-  try {
-    const res = await fetch(`${API_BASE_PATH}/hacks/top`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error;
-  }
-};
+/** Fetch new hacks */
+export const getAllNewTricksData = () => fetchAPI('/hacks/new');
 
-export const getAllHotTricksData = async () => {
-  try {
-    const res = await fetch(`${API_BASE_PATH}/hacks/hot`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    }
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error;
-  }
-};
+/** Fetch top-rated hacks */
+export const getAllTopTricksData = () => fetchAPI('/hacks/top');
 
-export const likeHack = async (id) => {
-  try {
-    const response = await fetch(`${API_BASE_PATH}/hacks/${id}/like`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (!response.ok) {
-      throw new Error("Failed to like the hack");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Failed to like the hack:", error);
-  }
-};
+/** Fetch trending hacks */
+export const getAllHotTricksData = () => fetchAPI('/hacks/hot');
 
-export const dislikeHack = async (id) => {
-  try {
-    const response = await fetch(`${API_BASE_PATH}/hacks/${id}/dislike`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (!response.ok) {
-      throw new Error("Failed to dislike!");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Failed to dislike the hack:", error);
-  }
-};
+/** Like a hack */
+export const likeHack = (id) => fetchAPI(`/hacks/${id}/like`, 'POST');
 
-export const submitHack = async (data) => {
-  try {
-    const response = await fetch(`${API_BASE_PATH}/hacks`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    if (!response.ok) {
-      throw new Error("Failed to submit the hack.");
-    }
-    const responseData = await response.json();
-    return responseData;
-  } catch (error) {
-    console.error("Failed to submit the hack:", error);
-    throw error;
-  }
-};
+/** Dislike a hack */
+export const dislikeHack = (id) => fetchAPI(`/hacks/${id}/dislike`, 'POST');
 
-export const addCommentToHack = async (hackId, commentData) => {
-  try {
-    const response = await fetch(`${API_BASE_PATH}/hacks/${hackId}/comments`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(commentData),
-    });
-    if (!response.ok) {
-      throw new Error("Failed to add comment");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error adding comment:", error);
-  }
-};
+/** Submit a new hack */
+export const submitHack = (data) => fetchAPI('/hacks', 'POST', data);
 
-export const addReplyToComment = async (hackId, commentId, replyData) => {
-  try {
-    const response = await fetch(`${API_BASE_PATH}/hacks/${hackId}/comments`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ ...replyData, replyTo: commentId }),
-    });
-    if (!response.ok) {
-      throw new Error("Failed to add reply");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error adding reply:", error);
-  }
-};
+/** Add a comment to a hack */
+export const addCommentToHack = (hackId, commentData) =>
+  fetchAPI(`/hacks/${hackId}/comments`, 'POST', commentData);
 
-export const likeComment = async (hackId, commentId) => {
-  try {
-    const response = await fetch(
-      `${API_BASE_PATH}/hacks/${hackId}/comments/${commentId}/like`,
-      {
-        method: "POST",
-      },
-    );
-    if (!response.ok) {
-      throw new Error("Failed to like the comment");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error liking the comment:", error);
-    throw error;
-  }
-};
+/** Add a reply to a comment */
+export const addReplyToComment = (hackId, commentId, replyData) =>
+  fetchAPI(`/hacks/${hackId}/comments`, 'POST', {
+    ...replyData,
+    replyTo: commentId,
+  });
 
-export const dislikeComment = async (hackId, commentId) => {
-  try {
-    const response = await fetch(
-      `${API_BASE_PATH}/hacks/${hackId}/comments/${commentId}/dislike`,
-      {
-        method: "POST",
-      },
-    );
-    if (!response.ok) {
-      throw new Error("Failed to dislike the comment");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error disliking the comment:", error);
-    throw error;
-  }
-};
+/** Like a comment */
+export const likeComment = (hackId, commentId) =>
+  fetchAPI(`/hacks/${hackId}/comments/${commentId}/like`, 'POST');
 
-export const reportHack = async (hackId) => {
-  try {
-    const response = await fetch(`${API_BASE_PATH}/hacks/${hackId}/report`, {
-      method: "POST",
-    });
-    if (!response.ok) {
-      throw new Error("Failed to report the hack");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error Reporting the hack:", error);
-    throw error;
-  }
-};
+/** Dislike a comment */
+export const dislikeComment = (hackId, commentId) =>
+  fetchAPI(`/hacks/${hackId}/comments/${commentId}/dislike`, 'POST');
 
-export const visitedHack = async (id) => {
-  try {
-    const response = await fetch(`${API_BASE_PATH}/hacks/${id}/visited`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (!response.ok) {
-      throw new Error("Failed to like the hack");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Failed to like the hack:", error);
-  }
-};
+/** Report a hack */
+export const reportHack = (hackId) =>
+  fetchAPI(`/hacks/${hackId}/report`, 'POST');
+
+/** Mark a hack as visited */
+export const visitedHack = (id) => fetchAPI(`/hacks/${id}/visited`, 'POST');

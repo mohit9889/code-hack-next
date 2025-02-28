@@ -1,59 +1,70 @@
-import React from "react";
-import { useRouter } from "next/router";
-import TopTrickSvg from "~/public/icons/tabs/top-trick.svg";
-import HotTrickSvg from "~/public/icons/tabs/hot-trick.svg";
-import NewTrickSvg from "~/public/icons/tabs/new-trick.svg";
+import React from 'react';
+import { useRouter } from 'next/router';
+import TopTrickSvg from '~/public/icons/tabs/top-trick.svg';
+import HotTrickSvg from '~/public/icons/tabs/hot-trick.svg';
+import NewTrickSvg from '~/public/icons/tabs/new-trick.svg';
 
-const Tabs = ({
-  tabs = [],
-  currentTab = {},
-  handleTabChange: handleTabStateChange = () => {},
-}) => {
+/**
+ * Tabs Component
+ *
+ * Renders a tab navigation bar allowing users to switch between different categories.
+ *
+ * @component
+ * @param {Object} props - Component properties
+ * @param {Array} props.tabs - Array of tab objects containing `title` and `link`
+ * @param {Object} props.currentTab - The currently active tab object
+ * @param {Function} props.handleTabChange - Callback function to handle tab state changes
+ * @returns {JSX.Element} The tab navigation UI
+ */
+const Tabs = ({ tabs = [], currentTab = {}, handleTabChange = () => {} }) => {
   const router = useRouter();
 
+  /**
+   * Returns the corresponding icon component based on the tab name.
+   * @param {string} name - The tab name ('hot', 'new', 'top')
+   * @returns {JSX.Element|null} - The icon component or null
+   */
   const getTabIcon = (name) => {
-    switch (name) {
-      case "hot":
-        return <HotTrickSvg />;
-      case "new":
-        return <NewTrickSvg />;
-      case "top":
-        return <TopTrickSvg />;
-      default:
-        return null;
-    }
+    const icons = {
+      hot: <HotTrickSvg />,
+      new: <NewTrickSvg />,
+      top: <TopTrickSvg />,
+    };
+    return icons[name] || null;
   };
 
-  const handleTabChange = (tab) => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  /**
+   * Handles tab switching by updating the URL query and scrolling to the top.
+   * @param {Object} tab - The selected tab object
+   */
+  const handleTabSelection = (tab) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     router.push(
       {
         pathname: router.pathname,
         query: { ...router.query, tab: tab.link },
       },
       undefined,
-      { shallow: true },
+      { shallow: true }
     );
-    handleTabStateChange(tab);
+
+    handleTabChange(tab);
   };
 
   return (
-    <ul className="flex items-center pt-5 sticky top-0 bg-primary-gray z-10 -mx-2 sm:px-2">
+    <ul className="sticky top-0 z-10 -mx-2 flex items-center bg-primary-gray pt-5 sm:px-2">
       {tabs.map((tab) => (
         <li
-          className={`flex-1 flex justify-center items-center cursor-pointer border-black-primary border-solid border-b-2 pb-3 font-bold text-base ${
-            currentTab.link === tab.link
-              ? ""
-              : "border-black-primary border-opacity-30 opacity-30 hover:opacity-100 hover:border-opacity-30"
-          }`}
           key={tab.title}
-          onClick={() => handleTabChange(tab)}
+          className={`flex flex-1 cursor-pointer items-center justify-center border-b-2 border-solid border-black-primary pb-3 text-base font-bold ${
+            currentTab.link === tab.link
+              ? ''
+              : 'border-black-primary/30 opacity-30 hover:border-black-primary/30 hover:opacity-100'
+          }`}
+          onClick={() => handleTabSelection(tab)}
         >
-          <span
-            className={`${tab.link !== "top" ? "icon-20" : "icon-20"} mr-1`}
-          >
-            {getTabIcon(tab.link)}
-          </span>
+          <span className="icon-20 mr-1">{getTabIcon(tab.link)}</span>
           {tab.title}
         </li>
       ))}

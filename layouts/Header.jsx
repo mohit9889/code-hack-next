@@ -1,33 +1,36 @@
-import React from "react";
-import Link from "next/link";
-import AddSvg from "~/public/icons/add.svg";
-import JSSvg from "~/public/icons/language/javascript.svg";
+import React from 'react';
+import Link from 'next/link';
+import AddSvg from '~/public/icons/add.svg';
+import JSSvg from '~/public/icons/language/javascript.svg';
 
+/**
+ * Header Component
+ *
+ * Displays the site header with a logo and a "New Trick" button.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Header component.
+ */
 const Header = () => {
   return (
-    <div className="flex items-center bg-white p-3 rounded-lg justify-between md:justify-normal">
+    <header className="flex items-center justify-between rounded-lg bg-white p-3 md:justify-normal">
+      {/* New Trick Button */}
       <div className="md:w-[calc(50%-55px)]">
         <Link
           href="/new"
-          as="/new"
-          className="add-trick w-max flex items-center bg-orange hover:bg-[#c2410c] rounded-lg p-3 text-white text-base font-semibold "
+          className="add-trick flex w-max items-center rounded-lg bg-orange p-3 text-base font-semibold text-white transition-colors duration-200 hover:bg-[#c2410c]"
         >
-          <span className="icon icon-white mr-1">
-            <AddSvg />
-          </span>
-          New Trick
+          <AddSvg className="mr-1 size-5" aria-hidden="true" />
+          <span>New Trick</span>
         </Link>
       </div>
-      <Link href="/" as="/">
-        <span className="font-bold text-lg flex items-center">
-          <span className="icon-20 mr-1">
-            <JSSvg />
-          </span>
-          JS Tricks
-        </span>
+
+      {/* Site Logo & Title */}
+      <Link href="/" className="flex items-center text-lg font-bold">
+        <JSSvg className="mr-1 size-6" aria-hidden="true" />
+        <span>JS Tricks</span>
       </Link>
-      {/* <span className="font-bold text-lg"></span> */}
-    </div>
+    </header>
   );
 };
 

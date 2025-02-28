@@ -1,27 +1,30 @@
-import React from "react";
-import Link from "next/link";
-import dynamic from "next/dynamic";
-import SEO from "~/components/SEO";
-import { pageNotFoundSeo } from "~/utils/seo";
+import React from 'react';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import SEO from '~/components/SEO';
+import { pageNotFoundSeo } from '~/utils/seo';
 
-const Heading = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: "Heading" */
-      "~/components/Heading"
-    ),
-);
+// Dynamically import the Heading component for better performance
+const Heading = dynamic(() => import('~/components/Heading'));
 
+/**
+ * ErrorPage Component
+ * Displays a 404 error message when a user navigates to a non-existent page.
+ */
 const ErrorPage = () => {
   return (
     <>
-      <SEO {...{ ...pageNotFoundSeo }} />
-      <div className="mt-5 h-[400px] flex flex-col items-center justify-center">
+      {/* Set up SEO metadata for the 404 page */}
+      <SEO {...pageNotFoundSeo} />
+
+      <div className="mt-5 flex h-[400px] flex-col items-center justify-center">
+        {/* Display error message */}
         <Heading heading="Oops! Looks like you've taken a wrong turn. Don't worry, even GPS gets confused sometimes!" />
+
+        {/* Button to navigate back to the homepage */}
         <Link
           href="/"
-          as="/"
-          className=" mt-4 w-max flex items-center bg-orange hover:bg-[#c2410c] rounded-lg p-3 text-white text-base font-semibold "
+          className="mt-4 flex w-max items-center rounded-lg bg-orange p-3 text-base font-semibold text-white hover:bg-[#c2410c]"
         >
           Go Back
         </Link>
