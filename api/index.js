@@ -76,3 +76,6 @@ export const reportHack = (hackId) =>
 
 /** Mark a hack as visited */
 export const visitedHack = (id) => fetchAPI(`/hacks/${id}/visited`, 'POST');
+
+/** Sitemap urls */
+export const sitemapURLs = () => fetchAPI(`/hacks/sitemap`, 'GET');

@@ -129,6 +129,7 @@ const Comments = ({ commentsData = [], hackId = '', handleSetCommentData }) => {
               hackId={hackId}
               comment={comment}
               handleSetCommentData={handleSetCommentData}
+              key={index}
             />
             <hr className="my-4 opacity-0" />
           </div>
