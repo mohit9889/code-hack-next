@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import { getSingleTrickData, reportHack, visitedHack } from '~/api';
+import {
+  getSingleTrickData,
+  reportHack,
+  visitedHack,
+  getHackComments,
+} from '~/api';
 import SEO from '~/components/SEO';
 import {
   getFromSessionStorage,
@@ -35,7 +40,9 @@ const Trick = ({ trickData = {} }) => {
   } = trickData;
 
   const [isHackReported, setIsHackReported] = useState(false);
-  const [commentsData, setCommentsData] = useState(comments);
+  const [commentsData, setCommentsData] = useState(
+    comments.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+  );
 
   useEffect(() => {
     const trackVisit = async () => {
@@ -59,17 +66,9 @@ const Trick = ({ trickData = {} }) => {
     }
   };
 
-  const updateComments = (newComment, commentId = '') => {
-    setCommentsData((prevComments) => {
-      if (commentId) {
-        return prevComments.map((comment) =>
-          comment._id === commentId
-            ? { ...comment, replies: [newComment, ...comment.replies] }
-            : comment
-        );
-      }
-      return [newComment, ...prevComments];
-    });
+  const updateComments = async () => {
+    const hackCommentsResponse = await getHackComments(id);
+    setCommentsData(hackCommentsResponse);
   };
 
   return (

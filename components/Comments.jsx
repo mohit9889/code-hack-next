@@ -88,6 +88,9 @@ const Comment = ({
             type="reply"
             handleSetCommentData={handleSetCommentData}
             showHeading={false}
+            closeReplyForm={() => {
+              setIsReplyFormOpen(false);
+            }}
           />
         )}
 

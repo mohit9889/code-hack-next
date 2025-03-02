@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.jshack.fun/sitemap.xml
+Sitemap: https://www.jshack.fun/api/sitemap

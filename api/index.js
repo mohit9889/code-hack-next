@@ -79,3 +79,7 @@ export const visitedHack = (id) => fetchAPI(`/hacks/${id}/visited`, 'POST');
 
 /** Sitemap urls */
 export const sitemapURLs = () => fetchAPI(`/hacks/sitemap`, 'GET');
+
+/** Sitemap urls */
+export const getHackComments = (hackId) =>
+  fetchAPI(`/hacks/${hackId}/comments`, 'GET');

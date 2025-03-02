@@ -17,6 +17,7 @@ import toast from 'react-hot-toast';
  * @param {'comment' | 'reply'} [props.type='comment'] - The type of input, either "comment" or "reply".
  * @param {function} props.handleSetCommentData - Function to update the comment list.
  * @param {boolean} [props.showHeading=true] - Determines whether to show the "Add a Comment" heading.
+ * @param {function} [props.closeReplyForm] - Function to coles te reply form, when comment's reply is added.
  * @returns {JSX.Element} The CommentForm component.
  */
 const CommentForm = ({
@@ -26,6 +27,7 @@ const CommentForm = ({
   type = 'comment',
   handleSetCommentData,
   showHeading = true,
+  closeReplyForm = () => {},
 }) => {
   const [isCommentBoxFocused, setIsCommentBoxFocused] = useState(false);
 
@@ -39,18 +41,16 @@ const CommentForm = ({
     try {
       const formData = new FormData(e.target);
       const formDataObj = Object.fromEntries(formData.entries());
-      let comment;
 
       if (type === 'comment') {
-        const res = await addCommentToHack(hackId, formDataObj);
-        comment = res.comment;
+        await addCommentToHack(hackId, formDataObj);
       } else {
-        const res = await addReplyToComment(hackId, commentId, formDataObj);
-        comment = res.comment;
+        await addReplyToComment(hackId, commentId, formDataObj);
+        closeReplyForm();
       }
 
       // Update comment data in the parent component
-      handleSetCommentData(comment, commentId);
+      handleSetCommentData();
 
       // Show success notification
       toast.success('Hooray! A new comment to brighten our day!', {
