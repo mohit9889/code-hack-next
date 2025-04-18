@@ -50,7 +50,7 @@ Ensure you have the following installed:
 To run this project, you will need to add the following environment variables to your `.env` file.
 
 - `BASE_URL` - The base URL where your application is hosted.
-- `MONGODB_URI` - Your MongoDB connection string.
+- `MONGODB_URI` - MongoDB connection string.
 
 ### Example `.env` File
 
