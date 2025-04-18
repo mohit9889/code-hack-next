@@ -133,12 +133,24 @@ const Trick = ({ trickData = {} }) => {
 export default Trick;
 
 export async function getServerSideProps({ query }) {
-  const id = query.trick.split('-').pop();
-  const res = await getSingleTrickData(id);
+  const slug = query.trick || '';
+  const idCandidate = slug.split('-').pop();
 
-  if (res.status === 404) {
-    return { redirect: { destination: '/404', permanent: false } };
+  // If ID is not a valid MongoDB ObjectId
+  if (!/^[a-f\d]{24}$/i.test(idCandidate)) {
+    return { notFound: true };
   }
 
-  return { props: { trickData: res } };
+  try {
+    const res = await getSingleTrickData(idCandidate);
+
+    if (!res || res.status === 404) {
+      return { notFound: true };
+    }
+
+    return { props: { trickData: res } };
+  } catch (err) {
+    console.error('Error loading trick:', err);
+    return { notFound: true };
+  }
 }
