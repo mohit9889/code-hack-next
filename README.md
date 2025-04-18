@@ -50,14 +50,14 @@ Ensure you have the following installed:
 To run this project, you will need to add the following environment variables to your `.env` file.
 
 - `BASE_URL` - The base URL where your application is hosted.
-- `API_BASE_URL` - The base path where your API is accessible.
+- `MONGODB_URI` - Your MongoDB connection string.
 
 ### Example `.env` File
 
 ```plaintext
 # Configuration for the Next app
 BASE_URL=http://localhost:3000
-API_BASE_URL=http://localhost:4000/api/v1
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.dsjabxo.mongodb.net?retryWrites=true&w=majority&appName=Cluster0
 ```
 
 ### Built With

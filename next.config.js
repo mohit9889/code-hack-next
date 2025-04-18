@@ -15,6 +15,6 @@ module.exports = {
   },
   env: {
     BASE_URL: process.env.BASE_URL,
-    API_BASE_URL: process.env.API_BASE_URL,
+    MONGODB_URI: process.env.MONGODB_URI,
   },
 };

@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   try {
     // Fetch movie genres and generate slugs
     const resData = await sitemapURLs();
-    const movies =
+    const urls =
       resData.map((url) => {
         return `/trick/${url.url}`;
       }) || [];
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     const staticPages = ['/', '/404', '/about-me', '/new'];
 
     // Combine static pages and dynamic movie slugs
-    const pages = [...staticPages, ...movies];
+    const pages = [...staticPages, ...urls];
 
     // Generate sitemap XML
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
