@@ -1,43 +1,4 @@
 /**
- * Available programming languages with their respective icons.
- * @type {Array<{name: string, icon: string}>}
- */
-export const languages = [
-  {
-    name: 'JavaScript',
-    icon: 'icons/language/javascript.svg',
-  },
-];
-
-/**
- * Available themes for the code editor.
- * @type {string[]}
- */
-export const themes = ['monokai'];
-
-/**
- * Background options.
- * @type {string[]}
- */
-export const backgrounds = ['linear-gradient(to right, #8360c3, #2ebf91)'];
-
-/**
- * Default initial code.
- * @type {string}
- */
-export const initialCode = ``;
-
-/**
- * Navigation tabs for sorting tricks.
- * @type {Array<{link: string, title: string}>}
- */
-export const tabs = [
-  { link: 'hot', title: 'Hot' },
-  { link: 'new', title: 'New' },
-  { link: 'top', title: 'Top' },
-];
-
-/**
  * Generates a URL-friendly trick identifier.
  *
  * @param {string} title - The title of the trick.

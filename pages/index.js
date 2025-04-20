@@ -8,7 +8,7 @@ import {
   getAllNewTricksData,
   getAllTopTricksData,
 } from '~/services';
-import { tabs } from '~/utils/utilities';
+import { tabs, SHOW_ADD_TRICK_BUTTON_ON_INDEX } from '~/constants';
 import SEO from '~/components/SEO';
 import { homeSeo } from '~/utils/seo';
 import AddSvg from '~/public/icons/add.svg';
@@ -17,9 +17,6 @@ import AddSvg from '~/public/icons/add.svg';
 const Heading = dynamic(() => import('~/components/Heading'));
 const Tabs = dynamic(() => import('~/components/Tabs'));
 const TrickCard = dynamic(() => import('~/components/TrickCard'));
-
-// Set of indexes where the "Add Trick" button should be shown
-const SHOW_ADD_TRICK_BUTTON_ON_INDEX = new Set([4, 11]);
 
 export default function Home({ tricksData }) {
   const { query } = useRouter();

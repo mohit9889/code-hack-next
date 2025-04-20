@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import { submitHack } from '~/services';
 import SEO from '~/components/SEO';
 import { addNewSeo } from '~/utils/seo';
-import { initialCode, languages } from '~/utils/utilities';
+import { initialCode, languages } from '~/constants';
 import SendSvg from '~/public/icons/send.svg';
 import WarningSvg from '~/public/icons/warning.svg';
 import toast from 'react-hot-toast';

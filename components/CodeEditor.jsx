@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import AceEditor from 'react-ace';
-import { languages, themes } from '~/utils/utilities';
-import 'ace-builds/src-noconflict/mode-javascript';
-import 'ace-builds/src-noconflict/theme-monokai';
+import { languages, themes } from '~/constants';
+import 'ace-builds/src-noconflict/ext-language_tools';
+import '~/utils/ace-theme-vscode-dark';
 
 /**
  * CodeEditor Component
  *
- * A syntax-highlighted code editor using `react-ace`. Supports real-time resizing.
+ * A syntax-highlighted code editor using `react-ace`. Supports real-time resizing and live autocompletion.
  *
  * @component
  * @param {Object} props - Component props
@@ -21,7 +21,7 @@ const CodeEditor = ({ code, handleCodeChange }) => {
 
   // Default language and theme
   const language = languages[0]?.name.toLowerCase() || 'javascript';
-  const theme = themes[0] || 'monokai';
+  const theme = themes[0] || 'vscode_dark';
 
   /**
    * Updates the editor's width based on the window size.
@@ -35,6 +35,18 @@ const CodeEditor = ({ code, handleCodeChange }) => {
     updateSize();
     return () => window.removeEventListener('resize', updateSize);
   }, []);
+
+  // Fix: Wait until the editor instance is available
+  useEffect(() => {
+    if (editorRef.current && editorRef.current.editor) {
+      const editor = editorRef.current.editor;
+      // Enabling live autocompletion once the editor is initialized
+      editor.setOptions({
+        enableBasicAutocompletion: true,
+        enableLiveAutocompletion: true,
+      });
+    }
+  }, [editorRef]); // Dependency on editorRef to ensure it's set
 
   return (
     <div
@@ -58,6 +70,11 @@ const CodeEditor = ({ code, handleCodeChange }) => {
           className="ace-editor-container rounded"
           onChange={handleCodeChange}
           placeholder="Write or paste your code here!"
+          setOptions={{
+            enableBasicAutocompletion: true,
+            enableLiveAutocompletion: true,
+            enableSnippets: true,
+          }}
         />
       </div>
     </div>

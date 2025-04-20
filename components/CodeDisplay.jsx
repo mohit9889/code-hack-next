@@ -1,5 +1,5 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 /**
  * CodeDisplay Component
@@ -16,7 +16,7 @@ const CodeDisplay = ({ code, language }) => {
   return (
     <div className="code-display">
       {/* SyntaxHighlighter for code formatting */}
-      <SyntaxHighlighter language={language} style={materialDark}>
+      <SyntaxHighlighter language={language} style={vscDarkPlus}>
         {code}
       </SyntaxHighlighter>
     </div>
