@@ -25,8 +25,8 @@ body {
 }
 
 // components
-@import './components/Icons.scss';
-@import './components/CodeEditor.scss';
-@import './components/CodeDisplay.scss';
-@import './components/Content.scss';
-@import './components/TextEditor.scss';
+@import './components/icons';
+@import './components/code-editor';
+@import './components/code-display';
+@import './components/content';
+@import './components/text-editor';

@@ -131,7 +131,7 @@ const TextEditor = ({ editor }) => {
   if (!editor) return null;
 
   return (
-    <div className="flex h-[148px] flex-col">
+    <div className="flex flex-col">
       <ToolBar editor={editor} />
       <EditorContent editor={editor} />
     </div>

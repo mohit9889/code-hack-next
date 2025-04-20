@@ -37,7 +37,7 @@ const InputField = ({
   <div className="mt-7 flex flex-col">
     <label htmlFor={name} className="flex justify-between">
       <span className="flex">
-        <span className="text-sm">{label}</span>
+        <span className="text-sm font-bold">{label}</span>
         {required && <span className="text-2xl text-orange">*</span>}
       </span>
       {tooltip && (
@@ -84,7 +84,7 @@ const New = () => {
     editorProps: {
       attributes: {
         class:
-          'p-2 rounded-lg outline-none focus:border bg-white min-h-[100px]',
+          'p-2 rounded-lg outline-none focus:border bg-white h-[150px] overflow-y-auto',
       },
     },
     onUpdate({ editor }) {
@@ -145,7 +145,7 @@ const New = () => {
           {/* Description Input (Rich Text Editor) */}
           <div className="mt-7 flex flex-col">
             <label htmlFor="description" className="mb-3">
-              <span className="text-sm">Description</span>
+              <span className="text-sm font-bold">Description</span>
             </label>
             <TextEditor editor={editor} />
           </div>
@@ -153,7 +153,7 @@ const New = () => {
           {/* Code Editor Input */}
           <div className="mt-7 flex flex-col">
             <label htmlFor="code" className="mb-3">
-              <span className="text-sm">Code</span>
+              <span className="text-sm font-bold">Code</span>
             </label>
             <div className="flex">
               <CodeEditor code={code} handleCodeChange={setCode} />
