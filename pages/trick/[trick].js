@@ -5,7 +5,7 @@ import {
   reportHack,
   visitedHack,
   getHackComments,
-} from '~/api';
+} from '~/services';
 import SEO from '~/components/SEO';
 import {
   getFromSessionStorage,

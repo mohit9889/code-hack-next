@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { submitHack } from '~/api';
+import { submitHack } from '~/services';
 import SEO from '~/components/SEO';
 import { addNewSeo } from '~/utils/seo';
 import { initialCode, languages } from '~/utils/utilities';

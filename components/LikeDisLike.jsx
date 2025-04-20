@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { likeHack, dislikeHack, likeComment, dislikeComment } from '~/api';
+import { likeHack, dislikeHack, likeComment, dislikeComment } from '~/services';
 import LikeSvg from '~/public/icons/like.svg';
 import DislikeSvg from '~/public/icons/dislike.svg';
 

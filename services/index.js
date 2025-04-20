@@ -7,7 +7,9 @@
  */
 const fetchAPI = async (endpoint, method = 'GET', body = null) => {
   try {
-    const baseUrl = process.env.BASE_URL;
+    const isServer = typeof window === 'undefined';
+
+    const baseUrl = isServer ? process.env.BASE_URL : '';
 
     const options = {
       method,

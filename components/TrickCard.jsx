@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { reportHack } from '~/api';
+import { reportHack } from '~/services';
 import ShareButton from './Share';
 import LikeDisLike from './LikeDisLike';
 import { getTrickURL, formatDate } from '~/utils/utilities';

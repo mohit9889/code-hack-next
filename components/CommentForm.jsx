@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { addCommentToHack, addReplyToComment } from '~/api';
+import { addCommentToHack, addReplyToComment } from '~/services';
 import Tooltip from './Tooltip';
 import WarningSvg from '~/public/icons/warning.svg';
 import toast from 'react-hot-toast';

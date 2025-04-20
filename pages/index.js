@@ -7,7 +7,7 @@ import {
   getAllHotTricksData,
   getAllNewTricksData,
   getAllTopTricksData,
-} from '~/api';
+} from '~/services';
 import { tabs } from '~/utils/utilities';
 import SEO from '~/components/SEO';
 import { homeSeo } from '~/utils/seo';

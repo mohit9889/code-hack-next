@@ -1,4 +1,4 @@
-import { sitemapURLs } from '~/api';
+import { sitemapURLs } from '~/services';
 
 export default async function handler(req, res) {
   const BASE_URL = process.env.BASE_URL;
