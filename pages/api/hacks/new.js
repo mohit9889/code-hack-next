@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     try {
       const hacks = await Hack.find()
         .sort({ created_at: -1 })
-        .limit(50)
+        // .limit(50)
         .populate(populateComments());
       return res.status(200).json(hacks);
     } catch (error) {
