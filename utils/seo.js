@@ -5,6 +5,14 @@ export const homeSeo = {
   ogImage: '/img/js-logo.png',
   keywords:
     'JavaScript hacks, JavaScript tricks, web development, coding tips, JavaScript tutorials, frontend development, coding hacks, programming techniques, code snippets, web development shortcuts, JavaScript projects, DOM manipulation, JavaScript best practices, coding community, developer resources, learn JavaScript, share JavaScript tips, collaborative coding, innovative coding techniques',
+  schemaData: {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'JSHack',
+    url: 'https://www.jshack.fun/',
+    description:
+      'Explore JavaScript hacks and join a thriving developer community to boost your coding skills.',
+  },
 };
 
 export const addNewSeo = {
@@ -14,6 +22,14 @@ export const addNewSeo = {
   ogImage: '/img/js-logo.png',
   keywords:
     'Submit JavaScript hack, share coding tricks, JavaScript community, web development tips, JavaScript tutorials, coding hacks, programming techniques, JavaScript projects, code snippets, frontend development, collaborative coding, innovative solutions, developer resources, JavaScript best practices, coding tips exchange',
+  schemaData: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Submit Hack',
+    url: 'https://www.jshack.fun/new',
+    description:
+      'Submit your JavaScript hacks and contribute to a growing developer knowledge base.',
+  },
 };
 
 export const trickSeo = {
@@ -22,6 +38,13 @@ export const trickSeo = {
   ogImage: '/img/js-logo.png',
   keywords:
     'JavaScript hacks, JavaScript tricks, coding inspiration, JavaScript tips, JavaScript techniques, web development tricks, coding solutions, JavaScript code snippets, innovative JavaScript, developer community, JavaScript hackathon, coding library, user-generated hacks, popular JavaScript tricks, programming tips',
+  schemaData: {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'JavaScript Tricks Collection',
+    description:
+      'A curated collection of user-submitted JavaScript hacks and programming tricks.',
+  },
 };
 
 export const aboutMeSeo = {
@@ -31,6 +54,19 @@ export const aboutMeSeo = {
   ogImage: '/img/js-logo.png',
   keywords:
     'Mohit Rajput, JavaScript developer, coding journey, JavaScript enthusiast, JavaScript expert, web development, JavaScript innovation, coding passion, programming visionary, JavaScript storyteller, developer biography, coding inspiration, JavaScript community leader',
+  schemaData: {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Mohit Rajput',
+    url: 'https://www.jshack.fun/about',
+    description:
+      'JavaScript developer sharing innovative coding hacks and building a strong developer community.',
+    // sameAs: [
+    //   'https://github.com/your-profile',
+    //   'https://twitter.com/your-handle',
+    //   'https://www.linkedin.com/in/your-profile',
+    // ],
+  },
 };
 
 export const pageNotFoundSeo = {
@@ -40,4 +76,12 @@ export const pageNotFoundSeo = {
   ogImage: '/img/js-logo.png',
   keywords:
     '404 error, page not found, JavaScript resources, coding tutorials, JavaScript tricks, web development, coding tips, JavaScript community, developer resources, programming help, web development community, JavaScript learning, coding support, developer tips',
+  schemaData: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: '404 Page Not Found',
+    url: 'https://www.jshack.fun/404',
+    description:
+      'This page does not exist. Return to the homepage or browse our resources.',
+  },
 };

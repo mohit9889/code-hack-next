@@ -1,5 +1,7 @@
 # Allow all crawlers
 User-agent: *
+Disallow: /api/
 Allow: /
 
+# Sitemap location (update if you have a dynamic one)
 Sitemap: https://www.jshack.fun/api/sitemap

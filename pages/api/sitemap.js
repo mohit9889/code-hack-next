@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       }) || [];
 
     // Define static pages
-    const staticPages = ['/', '/404', '/about-me', '/new'];
+    const staticPages = ['/', '/about-me', '/new'];
 
     // Combine static pages and dynamic movie slugs
     const pages = [...staticPages, ...urls];
