@@ -40,7 +40,8 @@
     "react-ace": "^11.0.1",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-syntax-highlighter": "^15.5.0",
+    "zod": "^4.3.6"
   },
   "engines": {
     "node": ">18"
