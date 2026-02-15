@@ -14,7 +14,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || '';
  * @returns {JSX.Element} A button that allows sharing the given URL.
  */
 const ShareButton = ({ url, customClass }) => {
-  const shareUrl = `${BASE_URL}/${url}`.replace(/\/{2,}/g, '/'); // Prevent double slashes
+  const shareUrl = `${BASE_URL}/${url}`.replace(/([^:]\/)\/+/g, '$1'); // Prevent double slashes
 
   /**
    * Handles sharing via the Web Share API or clipboard fallback.

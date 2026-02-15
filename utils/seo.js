@@ -9,7 +9,7 @@ export const homeSeo = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'JSHack',
-    url: 'https://www.jshack.fun/',
+    url: 'https://code-hack-next.vercel.app/',
     description:
       'Explore JavaScript hacks and join a thriving developer community to boost your coding skills.',
   },
@@ -26,7 +26,7 @@ export const addNewSeo = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: 'Submit Hack',
-    url: 'https://www.jshack.fun/new',
+    url: 'https://code-hack-next.vercel.app/new',
     description:
       'Submit your JavaScript hacks and contribute to a growing developer knowledge base.',
   },
@@ -58,7 +58,7 @@ export const aboutMeSeo = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Mohit Rajput',
-    url: 'https://www.jshack.fun/about',
+    url: 'https://code-hack-next.vercel.app/about',
     description:
       'JavaScript developer sharing innovative coding hacks and building a strong developer community.',
     // sameAs: [
@@ -80,7 +80,7 @@ export const pageNotFoundSeo = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: '404 Page Not Found',
-    url: 'https://www.jshack.fun/404',
+    url: 'https://code-hack-next.vercel.app/404',
     description:
       'This page does not exist. Return to the homepage or browse our resources.',
   },

@@ -73,7 +73,23 @@ const Trick = ({ trickData = {} }) => {
 
   return (
     <>
-      <SEO title={title} {...trickSeo} />
+      <SEO
+        title={`${title} | JSHack`}
+        description={description}
+        keywords={`JavaScript, ${code_lang}, ${title}, coding hack, programming trick`}
+        schemaData={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareSourceCode',
+          name: title,
+          programmingLanguage: code_lang,
+          text: code,
+          author: {
+            '@type': 'Person',
+            name: user_name,
+          },
+          dateCreated: createdAt,
+        }}
+      />
       <div className="my-5">
         <BackButton />
         <div className="mb-4 mt-3 rounded-lg bg-white p-3">

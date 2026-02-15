@@ -41,6 +41,7 @@ const SEO = ({ title, description, ogImage, keywords, schemaData }) => {
       <meta property="og:image" content={ogImage} />
       <meta property="og:url" content={ogUrl} />
       <meta property="og:type" content="website" />
+      <link rel="canonical" href={ogUrl} />
 
       {/* Misc Meta Tags */}
       <meta name="theme-color" content="#E3E3E3" />
