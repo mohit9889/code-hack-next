@@ -1,14 +1,13 @@
 import { apiHandler } from '~/lib/api-handler';
+import { getHackById } from '~/lib/hacks-controller';
 import { hackIdSchema } from '~/lib/validations';
-import Hack from '~/models/Hack';
-import { populateComments } from '~/utils/populate';
 
 export default apiHandler({
   GET: async (req, res) => {
     const { id } = req.query;
     hackIdSchema.parse(id);
 
-    const hack = await Hack.findById(id).populate(populateComments());
+    const hack = await getHackById(id);
     if (!hack) {
       const error = new Error('Hack not found');
       error.statusCode = 404;
